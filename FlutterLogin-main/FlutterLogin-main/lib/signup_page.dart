@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:get/get.dart';
+import 'googleSignIn.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -192,15 +193,26 @@ class SignUpPage extends StatelessWidget {
                   Center(
                     child: Wrap(
                       children: List<Widget>.generate(3, (index) {
+                        //구글 로그인
                         return Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: CircleAvatar(
-                            radius: 30,
-                            backgroundColor: Colors.white,
+                          child: FlatButton(
+                            onPressed: () {
+                              if (index == 0) {
+                                signInWithGoogle(); //googleSiginIn메소드에 정의 됨
+                                print("구글 로그인 버튼클릭!!");
+                              } else {
+                                print("다른 버튼클릭 됨!");
+                              }
+                            },
                             child: CircleAvatar(
-                              radius: 25,
-                              backgroundImage:
-                                  AssetImage("img/" + images[index]),
+                              radius: 30,
+                              backgroundColor: Colors.white,
+                              child: CircleAvatar(
+                                radius: 25,
+                                backgroundImage:
+                                    AssetImage("img/" + images[index]),
+                              ),
                             ),
                           ),
                         );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 
+//MainHome화면
 class MainHome extends StatelessWidget {
   String email;
   MainHome({Key? key, required this.email}) : super(key: key);
