@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
+import 'package:flutter_login/googleSignIn.dart';
 import 'package:flutter_login/signup_page.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +15,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
+
+  //SnS 로그인 image 리스트
+  List images = ["google.png", "twitter.png", "facebook.jpg"];
 
   @override
   Widget build(BuildContext context) {
@@ -178,7 +182,49 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           SizedBox(
-            height: w * 0.18,
+            height: 10,
+          ),
+          Center(
+            child: RichText(
+              text: TextSpan(
+                text: "아래 SNS 계정 선택 가능",
+                style: TextStyle(
+                  color: Colors.grey[500],
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Wrap(
+              children: List<Widget>.generate(3, (index) {
+                //구글 로그인
+                return Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: FlatButton(
+                    onPressed: () {
+                      if (index == 0) {
+                        signInWithGoogle(); //googleSiginIn메소드에 정의 됨
+                        print("구글 로그인 버튼클릭!!");
+                      } else {
+                        print("다른 버튼클릭 됨!");
+                      }
+                    },
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 25,
+                        backgroundImage: AssetImage("img/" + images[index]),
+                      ),
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ),
+          SizedBox(
+            height: w * 0.1,
           ),
           RichText(
             text: TextSpan(

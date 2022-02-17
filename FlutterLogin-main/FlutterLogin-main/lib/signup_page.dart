@@ -25,8 +25,6 @@ class SignUpPage extends StatelessWidget {
       _passwordController.dispose();
     }
 
-    List images = ["google.png", "twitter.png", "facebook.jpg"];
-
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
@@ -178,46 +176,6 @@ class SignUpPage extends StatelessWidget {
                   ),
                   SizedBox(
                     height: h * 0.1,
-                  ),
-                  Center(
-                    child: RichText(
-                      text: TextSpan(
-                        text: "아래 SNS 계정 선택 가능",
-                        style: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Wrap(
-                      children: List<Widget>.generate(3, (index) {
-                        //구글 로그인
-                        return Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: FlatButton(
-                            onPressed: () {
-                              if (index == 0) {
-                                signInWithGoogle(); //googleSiginIn메소드에 정의 됨
-                                print("구글 로그인 버튼클릭!!");
-                              } else {
-                                print("다른 버튼클릭 됨!");
-                              }
-                            },
-                            child: CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.white,
-                              child: CircleAvatar(
-                                radius: 25,
-                                backgroundImage:
-                                    AssetImage("img/" + images[index]),
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
                   ),
                 ],
               ),
