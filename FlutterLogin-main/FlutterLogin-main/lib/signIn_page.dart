@@ -51,11 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                   ),
                   Text(
-<<<<<<< HEAD
-                    "정보를 입력 해 주세요",
-=======
-                    "정보를 입력 해 주세요zzzzㅋㅋ",
->>>>>>> 3e6c204046f91faebcd37c423cef19f331f9c50d
+                    "정보를 입력 해 주세요123",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.grey[500],
