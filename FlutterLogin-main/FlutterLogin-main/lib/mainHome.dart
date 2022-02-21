@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
-<<<<<<< HEAD
-=======
 import 'package:flutter_login/fireStroe.dart';
->>>>>>> 3e6c204046f91faebcd37c423cef19f331f9c50d
 import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
@@ -90,10 +87,7 @@ class _MainHomeState extends State<MainHome> {
                             IconButton(
                               onPressed: () {
                                 print("Open!!");
-<<<<<<< HEAD
-=======
                                 readData();
->>>>>>> 3e6c204046f91faebcd37c423cef19f331f9c50d
                               },
                               icon: Icon(Icons.lock_open),
                               iconSize: 60.0,
