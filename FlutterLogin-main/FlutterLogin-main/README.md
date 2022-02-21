@@ -1,4 +1,4 @@
-안녕 나는 김지원
+안녕 나는 김지
 
 # Flutter_login (Firebase기반)
 
