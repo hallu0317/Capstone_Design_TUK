@@ -12,6 +12,8 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var _emailController = TextEditingController();
     var _passwordController = TextEditingController();
+    var _passwordConfirmController = TextEditingController();
+
     final _auth = FirebaseAuth.instance;
 
     final _focusNode = FocusScopeNode();
@@ -23,6 +25,42 @@ class SignUpPage extends StatelessWidget {
     void dispose() {
       _emailController.dispose();
       _passwordController.dispose();
+      _passwordConfirmController.dispose();
+    }
+
+//비밀번호 일치하지 않을 때 에러처리
+    void FlutterDialog() {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0)),
+              title: Column(
+                children: [
+                  Text("Error"),
+                ],
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "비밀번호가 일치하지 않습니다.",
+                  ),
+                ],
+              ),
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      Get.back();
+                      // Get.to(SignUpPage());
+                    },
+                    child: Text("확인")),
+              ],
+            );
+          });
     }
 
     double w = MediaQuery.of(context).size.width;
@@ -76,6 +114,9 @@ class SignUpPage extends StatelessWidget {
                       controller: _emailController,
                       decoration: InputDecoration(
                         hintText: "Email",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
                         prefixIcon: Icon(
                           Icons.email,
                           color: Colors.blue[100],
@@ -113,8 +154,51 @@ class SignUpPage extends StatelessWidget {
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Password",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
                         prefixIcon: Icon(
                           Icons.lock,
+                          color: Colors.blue[100],
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide:
+                              BorderSide(color: Colors.white, width: 1.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide:
+                              BorderSide(color: Colors.white, width: 1.0),
+                        ),
+                      ),
+                      // onChanged: (text) => password2 = text
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 10,
+                              spreadRadius: 7,
+                              offset: Offset(1, 1),
+                              color: Colors.grey.withOpacity(0.2))
+                        ]),
+                    child: TextFormField(
+                      controller: _passwordConfirmController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: "Password Confirm",
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.lock_outline,
                           color: Colors.blue[100],
                         ),
                         focusedBorder: OutlineInputBorder(
@@ -143,9 +227,16 @@ class SignUpPage extends StatelessWidget {
                         color: Colors.blue[200],
                         child: MaterialButton(
                           onPressed: () {
-                            AuthController.instance.register(
-                                _emailController.text.trim(),
-                                _passwordController.text.trim());
+                            if (_passwordController.value ==
+                                _passwordConfirmController.value) {
+                              AuthController.instance.register(
+                                  _emailController.text.trim(),
+                                  _passwordController.text.trim());
+                            }
+                            //비밀번호가 일치하지 않으면
+                            else {
+                              FlutterDialog();
+                            }
                           },
                           child: Center(
                             child: Text(
