@@ -1,25 +1,11 @@
-<<<<<<< HEAD
-안녕 나는 김지
-
 # Flutter_login (Firebase기반)
 
-=======
-
-
-# Flutter_login (Firebase기반)
->>>>>>> 3e6c204046f91faebcd37c423cef19f331f9c50d
 - 로그인 회원가입 UI
 <p float = "left">
 <img src = "https://user-images.githubusercontent.com/76845678/152490663-3b06174a-7cf0-4c6a-9ca6-9ced929228ea.png" width = "300" height="550">
 <img src = "https://user-images.githubusercontent.com/76845678/152491045-b048d6df-d760-4d24-af62-4c72cf97f13c.png" width = "300" height = "550">
   <p>
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 3e6c204046f91faebcd37c423cef19f331f9c50d
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -37,8 +23,9 @@ samples, guidance on mobile development, and a full API reference.
 
 # Flutter_login
 
-> > > > > > > 3575be7e1dc8a26ab0f8552e6b7e439f9ea6ca8c
-=======
+> > > > > > > # 3575be7e1dc8a26ab0f8552e6b7e439f9ea6ca8c
+
 # Flutter_login
->>>>>>> 3575be7e1dc8a26ab0f8552e6b7e439f9ea6ca8c
->>>>>>> 3e6c204046f91faebcd37c423cef19f331f9c50d
+
+> > > > > > > 3575be7e1dc8a26ab0f8552e6b7e439f9ea6ca8c
+> > > > > > > 3e6c204046f91faebcd37c423cef19f331f9c50d
