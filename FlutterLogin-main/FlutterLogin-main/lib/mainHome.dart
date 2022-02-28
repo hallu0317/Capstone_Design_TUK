@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
-import 'package:flutter_login/fireStroe.dart';
+import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
