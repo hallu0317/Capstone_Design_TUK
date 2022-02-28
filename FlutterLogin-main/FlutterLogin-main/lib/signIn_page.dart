@@ -35,18 +35,21 @@ class _LoginPageState extends State<LoginPage> {
             constraints: BoxConstraints(),
             child: Column(
               children: [
+                SizedBox(
+                  height: 24,
+                ),
                 Container(
                   width: w,
-                  height: h * 0.1,
+                  height: h * 0.125,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("img/mainTheme.png"),
+                      image: AssetImage("img/ex1.PNG"),
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 70.0,
+                  height: 20.0,
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
