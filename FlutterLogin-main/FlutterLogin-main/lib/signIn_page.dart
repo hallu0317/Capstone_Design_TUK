@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 100.0,
+                  height: 70.0,
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 50,
+                        height: 40,
                       ),
                       Container(
                         decoration: BoxDecoration(
@@ -182,8 +182,8 @@ class _LoginPageState extends State<LoginPage> {
                   height: 15,
                 ),
                 Container(
-                  height: 35.0,
-                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                  height: 50.0,
+                  width: w * 0.35,
                   child: Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(30.0),
@@ -198,32 +198,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           "로그인",
                           style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 35.0,
-                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
-                  child: Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: Colors.blue[200],
-                    child: MaterialButton(
-                      onPressed: () {},
-                      child: Center(
-                        child: Text(
-                          "회원가입",
-                          style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 30,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -276,7 +251,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: w * 0.1,
+                  height: w * 0.01,
                 ),
                 RichText(
                   text: TextSpan(
