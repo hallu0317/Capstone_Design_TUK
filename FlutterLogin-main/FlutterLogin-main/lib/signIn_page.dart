@@ -208,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 Center(
                   child: RichText(
@@ -251,7 +251,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: w * 0.01,
+                  height: w * 0.05,
                 ),
                 RichText(
                   text: TextSpan(
