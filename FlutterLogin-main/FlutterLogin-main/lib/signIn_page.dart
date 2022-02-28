@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   width: w,
-                  height: h * 0.1,
+                  height: h * 0.125,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("img/ex1.PNG"),
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 40.0,
+                  height: 20.0,
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
