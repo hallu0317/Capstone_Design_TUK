@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
@@ -11,7 +12,7 @@ import 'package:get/get.dart';
 class MainHome extends StatefulWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey(); //Drawer적용시키기 위함
   //로그인한 이메일
-  String email;
+  final String email;
   MainHome({Key? key, required this.email}) : super(key: key);
   @override
   State<MainHome> createState() => _MainHomeState();
@@ -46,7 +47,7 @@ class _MainHomeState extends State<MainHome> {
                   style: TextStyle(color: Colors.black),
                 ),
                 accountEmail: Text(
-                  'email@email.com',
+                  AuthController.instance.auth.currentUser!.email!,
                   style: TextStyle(color: Colors.black),
                 ),
                 decoration: BoxDecoration(
