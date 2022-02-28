@@ -30,231 +30,273 @@ class _LoginPageState extends State<LoginPage> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: Column(
-          children: [
-            Container(
-              width: w,
-              height: h * 0.18,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("img/mainTheme.png"), fit: BoxFit.fill),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, right: 20),
-              width: w,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "로그인",
-                    style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "정보를 입력 해 주세요",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.grey[500],
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(),
+            child: Column(
+              children: [
+                Container(
+                  width: w,
+                  height: h * 0.1,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("img/mainTheme.png"),
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            spreadRadius: 7,
-                            blurRadius: 10,
-                            offset: Offset(1, 1),
-                            color: Colors.grey.withOpacity(0.2),
-                          ),
-                        ]),
-                    child: TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        hintText: "Email",
-                        hintStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.email,
-                          color: Colors.blue[100],
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                            width: 1.0,
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        boxShadow: [
-                          BoxShadow(
-                            spreadRadius: 7,
-                            blurRadius: 10,
-                            offset: Offset(1, 1),
-                            color: Colors.grey.withOpacity(0.2),
-                          ),
-                        ]),
-                    child: TextField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        hintText: "Password",
-                        hintStyle: TextStyle(
-                          color: Colors.grey,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          color: Colors.blue[100],
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide:
-                              BorderSide(color: Colors.white, width: 1.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide(
-                            color: Colors.white,
-                            width: 1.0,
-                          ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
+                ),
+                SizedBox(
+                  height: 100.0,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 20, right: 20),
+                  width: w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Container(),
-                      ),
-                      // Text(
-                      //   "정보를 입력 해 주세요",
-                      //   style: TextStyle(
-                      //     fontSize: 20,
-                      //     color: Colors.grey[500],
-                      //   ),
-                      // ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-              width: w / 2,
-              child: Material(
-                elevation: 5.0,
-                borderRadius: BorderRadius.circular(30.0),
-                color: Colors.blue[200],
-                child: MaterialButton(
-                  onPressed: () {
-                    AuthController.instance.login(_emailController.text.trim(),
-                        _passwordController.text.trim());
-                  },
-                  child: Center(
-                    child: Text(
-                      "로그인",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  text: "아래 SNS 계정 선택 가능",
-                  style: TextStyle(
-                    color: Colors.grey[500],
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Wrap(
-                children: List<Widget>.generate(3, (index) {
-                  //구글 로그인
-                  return Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: FlatButton(
-                      onPressed: () {
-                        if (index == 0) {
-                          signInWithGoogle(); //googleSiginIn메소드에 정의 됨
-                          print("구글 로그인 버튼클릭!!");
-                        } else {
-                          print("다른 버튼클릭 됨!");
-                        }
-                      },
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.white,
+                      Center(
                         child: CircleAvatar(
-                          radius: 25,
-                          backgroundImage: AssetImage("img/" + images[index]),
+                          backgroundImage: AssetImage('img/TUK.PNG'),
+                          radius: 40.0,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          "Smart Doorlock",
+                          style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue[400]),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 7,
+                                blurRadius: 10,
+                                offset: Offset(1, 1),
+                                color: Colors.grey.withOpacity(0.2),
+                              ),
+                            ]),
+                        child: TextField(
+                          controller: _emailController,
+                          decoration: InputDecoration(
+                            hintText: "Email",
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: Colors.blue[100],
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                                width: 1.0,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            boxShadow: [
+                              BoxShadow(
+                                spreadRadius: 7,
+                                blurRadius: 10,
+                                offset: Offset(1, 1),
+                                color: Colors.grey.withOpacity(0.2),
+                              ),
+                            ]),
+                        child: TextField(
+                          controller: _passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: "Password",
+                            hintStyle: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Colors.blue[100],
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide:
+                                  BorderSide(color: Colors.white, width: 1.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                              borderSide: BorderSide(
+                                color: Colors.white,
+                                width: 1.0,
+                              ),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(),
+                          ),
+                          // Text(
+                          //   "정보를 입력 해 주세요",
+                          //   style: TextStyle(
+                          //     fontSize: 20,
+                          //     color: Colors.grey[500],
+                          //   ),
+                          // ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  height: 35.0,
+                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(30.0),
+                    color: Colors.blue[200],
+                    child: MaterialButton(
+                      onPressed: () {
+                        AuthController.instance.login(
+                            _emailController.text.trim(),
+                            _passwordController.text.trim());
+                      },
+                      child: Center(
+                        child: Text(
+                          "로그인",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  );
-                }),
-              ),
-            ),
-            SizedBox(
-              height: w * 0.1,
-            ),
-            RichText(
-              text: TextSpan(
-                text: "계정이 없으신가요?",
-                style: TextStyle(color: Colors.grey[500], fontSize: 20),
-                children: [
-                  TextSpan(
-                      text: " 회원가입",
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: 35.0,
+                  margin: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                  child: Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(30.0),
+                    color: Colors.blue[200],
+                    child: MaterialButton(
+                      onPressed: () {},
+                      child: Center(
+                        child: Text(
+                          "회원가입",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: RichText(
+                    text: TextSpan(
+                      text: "아래 SNS 계정 선택 가능",
                       style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => Get.to(() => SignUpPage())),
-                ],
-              ),
+                        color: Colors.grey[500],
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                  child: Wrap(
+                    children: List<Widget>.generate(3, (index) {
+                      //구글 로그인
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: FlatButton(
+                          onPressed: () {
+                            if (index == 0) {
+                              signInWithGoogle(); //googleSiginIn메소드에 정의 됨
+                              print("구글 로그인 버튼클릭!!");
+                            } else {
+                              print("다른 버튼클릭 됨!");
+                            }
+                          },
+                          child: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 25,
+                              backgroundImage:
+                                  AssetImage("img/" + images[index]),
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+                SizedBox(
+                  height: w * 0.1,
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: "계정이 없으신가요?",
+                    style: TextStyle(color: Colors.grey[500], fontSize: 20),
+                    children: [
+                      TextSpan(
+                          text: " 회원가입",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Get.to(() => SignUpPage())),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

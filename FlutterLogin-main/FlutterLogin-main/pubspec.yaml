@@ -68,6 +68,7 @@ flutter:
     - img/mainTheme.png
     - img/twitter.png
     - img/mainHotelImg.jpg
+    - img/TUK.PNG
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
