@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
@@ -22,20 +24,75 @@ class _MainHomeState extends State<MainHome> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.grey[400],
           title: Text(
             "TUK-Capstone",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           elevation: 0.0, //앱바의 입체감을 없애주기위함
           centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {},
-            color: Colors.black,
-          ),
-          backgroundColor: Colors.white,
         ),
-        drawer: drawer(),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundImage: AssetImage('img/face_image.PNG'),
+                  backgroundColor: Colors.white,
+                ),
+                accountName: Text(
+                  'NAME',
+                  style: TextStyle(color: Colors.black),
+                ),
+                accountEmail: Text(
+                  'email@email.com',
+                  style: TextStyle(color: Colors.black),
+                ),
+                decoration: BoxDecoration(
+                    color: Colors.grey[350],
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(40.0),
+                        bottomRight: Radius.circular(40.0))),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home'),
+                onTap: () {
+                  Get.to(MainHome(email: widget.email));
+                  print("홈버튼!!!!");
+                },
+              ),
+              ListTile(
+                  leading: Icon(Icons.person),
+                  title: Text('MyProfile'),
+                  onTap: () {
+                    print('profile is clicked');
+                    Get.to(MyProfile(email: widget.email));
+                  }),
+              ListTile(
+                  leading: Icon(Icons.settings),
+                  title: Text('Setting'),
+                  onTap: () {
+                    print('Setting is clicked');
+                  }),
+              ListTile(
+                  leading: Icon(Icons.question_answer_outlined),
+                  title: Text('Q&A'),
+                  onTap: () {
+                    print('Q&A is clicked');
+                  }),
+              ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text('Logout'),
+                  onTap: () {
+                    print('로그아웃');
+                    AuthController.instance.logOut();
+                  })
+            ],
+            //Home, MyProfile, Setting, Q&A, Logout
+          ),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -139,72 +196,5 @@ class _MainHomeState extends State<MainHome> {
         ),
       ),
     );
-  }
-
-//슬라이드 메뉴바
-  Drawer drawer() {
-    return Drawer(
-        child: ListView(
-      children: [
-        ListTile(
-          leading: Icon(
-            Icons.home,
-            color: Colors.grey[850],
-          ),
-          title: Text("Home"),
-          onTap: () {
-            Get.to(MainHome(email: widget.email));
-            print("홈버튼!!!!");
-          },
-          trailing: Icon(Icons.add),
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.person,
-            color: Colors.grey[850],
-          ),
-          title: Text('My Profile'),
-          onTap: () {
-            print('profile is clicked');
-            Get.to(MyProfile(email: widget.email));
-          },
-          trailing: Icon(Icons.add),
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.settings,
-            color: Colors.grey[850],
-          ),
-          title: Text('Setting'),
-          onTap: () {
-            print('Setting is clicked');
-          },
-          trailing: Icon(Icons.add),
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.question_answer,
-            color: Colors.grey[850],
-          ),
-          title: Text('Q&A'),
-          onTap: () {
-            print('Q&A is clicked');
-          },
-          trailing: Icon(Icons.add),
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.logout,
-            color: Colors.grey[850],
-          ),
-          title: Text('Logout'),
-          onTap: () {
-            print('로그아웃');
-            AuthController.instance.logOut();
-          },
-          trailing: Icon(Icons.add),
-        ),
-      ],
-    ));
   }
 }
