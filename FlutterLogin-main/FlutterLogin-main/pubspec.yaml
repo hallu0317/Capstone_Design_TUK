@@ -37,8 +37,8 @@ dependencies:
   firebase_core: ^1.12.0
   firebase_auth: ^3.3.6
   google_sign_in: ^5.2.1
+
   cloud_firestore: ^3.1.8
-  bootpay_api: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -68,8 +68,7 @@ flutter:
     - img/mainTheme.png
     - img/twitter.png
     - img/mainHotelImg.jpg
-    - img/mainTheme2.PNG
-    - img/ex1.PNG
+    - img/TUK.PNG
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
