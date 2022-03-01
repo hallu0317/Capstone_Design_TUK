@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
@@ -8,20 +10,34 @@ import 'package:get/get.dart';
 import 'googleSignIn.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    //컨트롤러
     var _emailController = TextEditingController();
     var _passwordController = TextEditingController();
     var _passwordConfirmController = TextEditingController();
+    var _nameController = TextEditingController();
+    var _phoneNumberController = TextEditingController();
 
+    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
     final _auth = FirebaseAuth.instance;
 
     final _focusNode = FocusScopeNode();
 
     String email2 = "";
     String password2 = "";
+
+//DB collection 조회
+    final memberCollection = FirebaseFirestore.instance.collection("member");
+//회원가입 데이터 디비 저장
+    Future updateMemberData() async {
+      print("데이터 추가!!");
+      return await memberCollection.doc(_emailController.text).set({
+        'email': _emailController.text,
+        "name": _nameController.text,
+        "phone": _phoneNumberController.text,
+      });
+    }
 
     @override
     void dispose() {
@@ -117,7 +133,7 @@ class SignUpPage extends StatelessWidget {
                                 color: Colors.grey.withOpacity(0.2))
                           ]),
                       child: TextFormField(
-                        controller: _emailController,
+                        controller: _nameController,
                         decoration: InputDecoration(
                           hintText: "Name",
                           hintStyle: TextStyle(
@@ -273,7 +289,7 @@ class SignUpPage extends StatelessWidget {
                                 color: Colors.grey.withOpacity(0.2))
                           ]),
                       child: TextFormField(
-                        controller: _passwordConfirmController,
+                        controller: _phoneNumberController,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Phone Number",
@@ -314,6 +330,7 @@ class SignUpPage extends StatelessWidget {
                                 AuthController.instance.register(
                                     _emailController.text.trim(),
                                     _passwordController.text.trim());
+                                updateMemberData();
                               }
                               //비밀번호가 일치하지 않으면
                               else {
