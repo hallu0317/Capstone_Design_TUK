@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/myProfile.dart';
+import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
 
@@ -186,7 +187,19 @@ class _MainHomeState extends State<MainHome> {
                   return Flexible(
                     child: Card(
                       child: Container(
-                        child: Center(child: Text(regions[index])),
+                        child: Center(
+                            child: TextButton(
+                                onPressed: () {
+                                  print('값 넘기기');
+                                  Get.to(RegionReservation(
+                                      region: regions[index]));
+                                },
+                                child: Text(
+                                  regions[index],
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ))),
                       ),
                     ),
                   );
