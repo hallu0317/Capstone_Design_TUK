@@ -191,7 +191,8 @@ class _MainHomeState extends State<MainHome> {
                             child: TextButton(
                                 onPressed: () {
                                   if (regions[index] == "예약") {
-                                    Get.to(RegionReservation());
+                                    Get.to(
+                                        RegionReservation(email: widget.email));
                                   } else if (regions[index] == "예약 조회") {
                                     print("예약 조회 클릭");
                                   } else if (regions[index] == "시설 이용") {
