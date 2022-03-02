@@ -181,7 +181,7 @@ class _MainHomeState extends State<MainHome> {
                 itemCount: regions.length,
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 4,
+                  crossAxisCount: 3,
                 ),
                 itemBuilder: (BuildContext context, int index) {
                   return Flexible(
@@ -190,9 +190,13 @@ class _MainHomeState extends State<MainHome> {
                         child: Center(
                             child: TextButton(
                                 onPressed: () {
-                                  print('값 넘기기');
-                                  Get.to(RegionReservation(
-                                      region: regions[index]));
+                                  if (regions[index] == "예약") {
+                                    Get.to(RegionReservation());
+                                  } else if (regions[index] == "예약 조회") {
+                                    print("예약 조회 클릭");
+                                  } else if (regions[index] == "시설 이용") {
+                                    print("시설 이용 클릭");
+                                  }
                                 },
                                 child: Text(
                                   regions[index],

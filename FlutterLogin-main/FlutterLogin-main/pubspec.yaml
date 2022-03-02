@@ -70,6 +70,10 @@ flutter:
     - img/TUK.PNG
     - img/ex1.PNG
     - img/face_image.PNG
+    - img/room_img/Single.PNG
+    - img/room_img/Deluxe.PNG
+    - img/room_img/Executive.PNG
+    - img/room_img/Suite.PNG
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
