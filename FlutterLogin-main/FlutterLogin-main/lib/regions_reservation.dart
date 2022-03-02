@@ -10,14 +10,19 @@ import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
 
-class RegionReservation extends StatelessWidget {
+class Reservation extends StatefulWidget {
   final String email;
-  const RegionReservation({Key? key, required this.email}) : super(key: key);
+  const Reservation({Key? key, required this.email}) : super(key: key);
 
   @override
+  State<Reservation> createState() => _ReservationState();
+}
+
+class _ReservationState extends State<Reservation> {
+  DateTime _selectedDate_in = DateTime.now();
+  DateTime _selectedDate_out = DateTime.now();
+  @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'RegionReservation',
@@ -58,7 +63,7 @@ class RegionReservation extends StatelessWidget {
                 leading: Icon(Icons.home),
                 title: Text('Home'),
                 onTap: () {
-                  Get.to(MainHome(email: email));
+                  Get.to(MainHome(email: widget.email));
                   print("홈버튼!!!!");
                 },
               ),
@@ -67,7 +72,7 @@ class RegionReservation extends StatelessWidget {
                   title: Text('MyProfile'),
                   onTap: () {
                     print('profile is clicked');
-                    Get.to(MyProfile(email: email));
+                    Get.to(MyProfile(email: widget.email));
                   }),
               ListTile(
                   leading: Icon(Icons.settings),
@@ -94,12 +99,79 @@ class RegionReservation extends StatelessWidget {
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      OutlinedButton(
+                          child: Text(
+                            "체크인 날짜",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          onPressed: () {
+                            Future<DateTime?> selected_in = showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime.now(),
+                                lastDate:
+                                    DateTime.now().add(Duration(days: 365)),
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                      data: ThemeData.light(), child: child!);
+                                });
+                            selected_in.then((selected_in) {
+                              setState(() {
+                                _selectedDate_in = selected_in!;
+                              });
+                            });
+                          }),
+                      Text(
+                        '$_selectedDate_in',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      OutlinedButton(
+                          child: Text(
+                            "체크아웃 날짜",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          onPressed: () {
+                            Future<DateTime?> selected_out = showDatePicker(
+                                context: context,
+                                initialDate:
+                                    DateTime.now().add(Duration(days: 1)),
+                                firstDate: DateTime.now(),
+                                lastDate:
+                                    DateTime.now().add(Duration(days: 366)),
+                                builder: (BuildContext context, Widget? child) {
+                                  return Theme(
+                                      data: ThemeData.light(), child: child!);
+                                });
+                            selected_out.then((selected_out) {
+                              setState(() {
+                                _selectedDate_out = selected_out!;
+                              });
+                            });
+                          }),
+                      Text(
+                        '$_selectedDate_out',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey, width: 3),
               ),
-              padding: EdgeInsets.all(10.0),
               child: Column(
                 children: [
                   Container(
