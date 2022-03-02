@@ -197,7 +197,7 @@ class _MainHomeState extends State<MainHome> {
                                   } else if (regions[index] == "예약 조회") {
                                     print("예약 조회 클릭");
                                   } else if (regions[index] == "시설 이용") {
-                                    Get.to(() => Payment(email: widget.email));
+                                    Get.to(Payment(email: widget.email));
                                     print("시설 이용 클릭");
                                   }
                                 },
