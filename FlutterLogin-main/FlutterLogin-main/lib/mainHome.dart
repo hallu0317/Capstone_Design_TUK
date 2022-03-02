@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/myProfile.dart';
+import 'package:flutter_login/payment.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
@@ -196,6 +197,7 @@ class _MainHomeState extends State<MainHome> {
                                   } else if (regions[index] == "예약 조회") {
                                     print("예약 조회 클릭");
                                   } else if (regions[index] == "시설 이용") {
+                                    Get.to(() => Payment(email: widget.email));
                                     print("시설 이용 클릭");
                                   }
                                 },
