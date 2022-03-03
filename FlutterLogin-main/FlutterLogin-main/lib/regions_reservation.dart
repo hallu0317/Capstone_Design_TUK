@@ -97,17 +97,17 @@ class _ReservationState extends State<Reservation> {
           ),
         ),
         body: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          child: Column(children: [
             Container(
               padding: EdgeInsets.all(10.0),
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OutlinedButton(
                           child: Text(
-                            "체크인 날짜",
+                            "Check In",
                             style: TextStyle(color: Colors.black),
                           ),
                           onPressed: () {
@@ -128,19 +128,11 @@ class _ReservationState extends State<Reservation> {
                             });
                           }),
                       SizedBox(
-                        width: 10.0,
+                        width: 60.0,
                       ),
-                      Text(
-                        '${_selectedDate_in.month.toString().padLeft(2, '0')}-${_selectedDate_in.day.toString().padLeft(2, '0')} 15:00',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
                       OutlinedButton(
                           child: Text(
-                            "체크아웃 날짜",
+                            "Check Out",
                             style: TextStyle(color: Colors.black),
                           ),
                           onPressed: () {
@@ -148,7 +140,8 @@ class _ReservationState extends State<Reservation> {
                                 context: context,
                                 initialDate:
                                     DateTime.now().add(Duration(days: 1)),
-                                firstDate: DateTime.now(),
+                                firstDate:
+                                    DateTime.now().add(Duration(days: 1)),
                                 lastDate:
                                     DateTime.now().add(Duration(days: 366)),
                                 builder: (BuildContext context, Widget? child) {
@@ -161,9 +154,37 @@ class _ReservationState extends State<Reservation> {
                               });
                             });
                           }),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Text(
-                        '${_selectedDate_out.month.toString().padLeft(2, '0')}-${_selectedDate_out.day.toString().padLeft(2, '0')} 11:00',
-                        style: TextStyle(fontSize: 15),
+                        '${_selectedDate_in.month.toString().padLeft(2, '0')}-${_selectedDate_in.day.toString().padLeft(2, '0')}',
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.brown[500]),
+                      ),
+                      SizedBox(
+                        width: 25.0,
+                      ),
+                      Text(
+                        "~",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.brown[500]),
+                      ),
+                      SizedBox(
+                        width: 30.0,
+                      ),
+                      Text(
+                        '${_selectedDate_out.month.toString().padLeft(2, '0')}-${_selectedDate_out.day.toString().padLeft(2, '0')}',
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.brown[500]),
                       ),
                     ],
                   ),
@@ -173,33 +194,63 @@ class _ReservationState extends State<Reservation> {
             SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 3),
+                border: Border.all(color: Colors.grey, width: 2),
               ),
               child: Column(
                 children: [
                   Container(
-                    child: Center(
-                      child: Text(
-                        'Standard Room',
-                        style: TextStyle(
+                    child: Text(
+                      'Standard Room',
+                      style: TextStyle(
                           fontSize: 30.0,
-                        ),
-                      ),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 2.0),
                     ),
                   ),
                   Image(
                     image: AssetImage("img/room_img/Single.PNG"),
                   ),
                   Container(
-                    child: Text('Hello'),
+                    padding: EdgeInsets.all(10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('스탠다드',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('아늑하면서 효율적인 공간',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        SizedBox(height: 10.0),
+                        Text('침대타입 : 더블(킹 사이즈), 트윈',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('객실크기 : 36m²',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600]))
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 1.0),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 3),
+                border: Border.all(color: Colors.grey, width: 2),
               ),
               child: Column(
                 children: [
@@ -208,19 +259,54 @@ class _ReservationState extends State<Reservation> {
                       child: Text(
                         'Deluxe Room',
                         style: TextStyle(
-                          fontSize: 30.0,
-                        ),
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2.0),
                       ),
                     ),
                   ),
                   Image(image: AssetImage("img/room_img/Deluxe.PNG")),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('디럭스',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('여유로운 휴식을 위한 공간',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        SizedBox(height: 10.0),
+                        Text('침대타입 : 더블(킹 사이즈)',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('객실크기 : 51m²',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600]))
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 1.0),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 3),
+                border: Border.all(color: Colors.grey, width: 2),
               ),
               child: Column(
                 children: [
@@ -229,19 +315,54 @@ class _ReservationState extends State<Reservation> {
                       child: Text(
                         'Executive Room',
                         style: TextStyle(
-                          fontSize: 30.0,
-                        ),
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2.0),
                       ),
                     ),
                   ),
                   Image(image: AssetImage("img/room_img/Executive.PNG")),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('이그제큐티브',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('휴식이 필요한 비즈니스 고객을 위한 공간',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        SizedBox(height: 10.0),
+                        Text('침대타입 : 더블(킹 사이즈), 트윈',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('객실크기 : 43m²',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600]))
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 1.0),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 3),
+                border: Border.all(color: Colors.grey, width: 2),
               ),
               child: Column(
                 children: [
@@ -250,12 +371,47 @@ class _ReservationState extends State<Reservation> {
                       child: Text(
                         'Suite Room',
                         style: TextStyle(
-                          fontSize: 30.0,
-                        ),
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 2.0),
                       ),
                     ),
                   ),
                   Image(image: AssetImage("img/room_img/Suite.PNG")),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('스위트',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('모던한 분위기의 고급스러운 공간',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        SizedBox(height: 10.0),
+                        Text('침대타입 : 더블(킹 사이즈), 트윈',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600])),
+                        Text('객실크기 : 124m²',
+                            style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                                color: Colors.grey[600]))
+                      ],
+                    ),
+                  ),
                 ],
               ),
             )
