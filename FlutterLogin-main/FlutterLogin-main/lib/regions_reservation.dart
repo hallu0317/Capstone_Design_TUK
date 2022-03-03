@@ -127,8 +127,11 @@ class _ReservationState extends State<Reservation> {
                               });
                             });
                           }),
+                      SizedBox(
+                        width: 10.0,
+                      ),
                       Text(
-                        '$_selectedDate_in',
+                        '${_selectedDate_in.month.toString().padLeft(2, '0')}-${_selectedDate_in.day.toString().padLeft(2, '0')} 15:00',
                         style: TextStyle(fontSize: 15),
                       ),
                     ],
@@ -159,7 +162,7 @@ class _ReservationState extends State<Reservation> {
                             });
                           }),
                       Text(
-                        '$_selectedDate_out',
+                        '${_selectedDate_out.month.toString().padLeft(2, '0')}-${_selectedDate_out.day.toString().padLeft(2, '0')} 11:00',
                         style: TextStyle(fontSize: 15),
                       ),
                     ],
@@ -195,18 +198,66 @@ class _ReservationState extends State<Reservation> {
             ),
             SizedBox(height: 10.0),
             Container(
-              padding: EdgeInsets.all(10.0),
-              child: Image(image: AssetImage("img/room_img/Deluxe.PNG")),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 3),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    child: Center(
+                      child: Text(
+                        'Deluxe Room',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Image(image: AssetImage("img/room_img/Deluxe.PNG")),
+                ],
+              ),
             ),
             SizedBox(height: 10.0),
             Container(
-              padding: EdgeInsets.all(10.0),
-              child: Image(image: AssetImage("img/room_img/Executive.PNG")),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 3),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    child: Center(
+                      child: Text(
+                        'Executive Room',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Image(image: AssetImage("img/room_img/Executive.PNG")),
+                ],
+              ),
             ),
             SizedBox(height: 10.0),
             Container(
-              padding: EdgeInsets.all(10.0),
-              child: Image(image: AssetImage("img/room_img/Suite.PNG")),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 3),
+              ),
+              child: Column(
+                children: [
+                  Container(
+                    child: Center(
+                      child: Text(
+                        'Suite Room',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Image(image: AssetImage("img/room_img/Suite.PNG")),
+                ],
+              ),
             )
           ]),
         ),
