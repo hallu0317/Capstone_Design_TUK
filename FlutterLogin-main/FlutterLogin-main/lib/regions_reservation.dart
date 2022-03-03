@@ -139,9 +139,9 @@ class _ReservationState extends State<Reservation> {
                             Future<DateTime?> selected_out = showDatePicker(
                                 context: context,
                                 initialDate:
-                                    DateTime.now().add(Duration(days: 1)),
+                                    _selectedDate_in.add(Duration(days: 1)),
                                 firstDate:
-                                    DateTime.now().add(Duration(days: 1)),
+                                    _selectedDate_in.add(Duration(days: 1)),
                                 lastDate:
                                     DateTime.now().add(Duration(days: 366)),
                                 builder: (BuildContext context, Widget? child) {

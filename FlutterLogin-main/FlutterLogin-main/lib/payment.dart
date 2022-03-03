@@ -4,14 +4,22 @@ import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/mainHome.dart';
 import 'package:flutter_login/myProfile.dart';
+import 'package:flutter_login/paymethod.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
 
-class Payment extends StatelessWidget {
+class Payment extends StatefulWidget {
   final String email;
   const Payment({Key? key, required this.email}) : super(key: key);
 
+  @override
+  State<Payment> createState() => _PaymentState();
+}
+
+class _PaymentState extends State<Payment> {
+  DateTime _selectedDate_in = DateTime.now();
+  DateTime _selectedDate_out = DateTime.now();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -57,7 +65,7 @@ class Payment extends StatelessWidget {
                     leading: Icon(Icons.home),
                     title: Text('Home'),
                     onTap: () {
-                      Get.to(MainHome(email: email));
+                      Get.to(MainHome(email: widget.email));
                       print("홈버튼!!!!");
                     },
                   ),
@@ -66,7 +74,7 @@ class Payment extends StatelessWidget {
                       title: Text('MyProfile'),
                       onTap: () {
                         print('profile is clicked');
-                        Get.to(MyProfile(email: email));
+                        Get.to(MyProfile(email: widget.email));
                       }),
                   ListTile(
                       leading: Icon(Icons.settings),
@@ -93,32 +101,131 @@ class Payment extends StatelessWidget {
             body: SingleChildScrollView(
                 child: Column(
               children: [
+                Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OutlinedButton(
+                              child: Text(
+                                "Check In",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              onPressed: () {
+                                Future<DateTime?> selected_in = showDatePicker(
+                                    context: context,
+                                    initialDate: DateTime.now(),
+                                    firstDate: DateTime.now(),
+                                    lastDate:
+                                        DateTime.now().add(Duration(days: 365)),
+                                    builder:
+                                        (BuildContext context, Widget? child) {
+                                      return Theme(
+                                          data: ThemeData.light(),
+                                          child: child!);
+                                    });
+                                selected_in.then((selected_in) {
+                                  setState(() {
+                                    _selectedDate_in = selected_in!;
+                                  });
+                                });
+                              }),
+                          SizedBox(
+                            width: 60.0,
+                          ),
+                          OutlinedButton(
+                              child: Text(
+                                "Check Out",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              onPressed: () {
+                                Future<DateTime?> selected_out = showDatePicker(
+                                    context: context,
+                                    initialDate:
+                                        _selectedDate_in.add(Duration(days: 1)),
+                                    firstDate:
+                                        _selectedDate_in.add(Duration(days: 1)),
+                                    lastDate:
+                                        DateTime.now().add(Duration(days: 366)),
+                                    builder:
+                                        (BuildContext context, Widget? child) {
+                                      return Theme(
+                                          data: ThemeData.light(),
+                                          child: child!);
+                                    });
+                                selected_out.then((selected_out) {
+                                  setState(() {
+                                    _selectedDate_out = selected_out!;
+                                  });
+                                });
+                              }),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${_selectedDate_in.month.toString().padLeft(2, '0')}-${_selectedDate_in.day.toString().padLeft(2, '0')}',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.brown[500]),
+                          ),
+                          SizedBox(
+                            width: 25.0,
+                          ),
+                          Text(
+                            "~",
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.brown[500]),
+                          ),
+                          SizedBox(
+                            width: 30.0,
+                          ),
+                          Text(
+                            '${_selectedDate_out.month.toString().padLeft(2, '0')}-${_selectedDate_out.day.toString().padLeft(2, '0')}',
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.brown[500]),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10.0),
                 const Image(
                   image: AssetImage("img/room_img/Single.PNG"),
                 ),
+                Column(
+                  children: [
+                    const Text(
+                      "결제 정보",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20.0),
+                    ),
+                    const Text(
+                      "TUK 호텔 스탠다드룸",
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                    const Text(
+                      "총 결제금액 : 50000원",
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                  ],
+                ),
+                Divider(color: Colors.green[100], thickness: 2.0),
                 const Text(
                   "예약자 정보",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
                 const Text(
-                  "이름 : 김지원",
-                  style: TextStyle(fontSize: 15.0),
-                ),
-                const Text(
-                  "이메일 : admin98@naver.com",
-                  style: TextStyle(fontSize: 15.0),
-                ),
-                const Text(
-                  "휴대폰번호 : 010-2251-0551",
-                  style: TextStyle(fontSize: 15.0),
-                ),
-                Divider(color: Colors.green[100], thickness: 2.0),
-                const Text(
-                  "결제 정보",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-                ),
-                const Text(
-                  "총 결제금액 : 50000원",
+                  "김지원 / 010-1111-2222",
                   style: TextStyle(fontSize: 15.0),
                 ),
                 Divider(color: Colors.green[100], thickness: 2.0),
@@ -126,6 +233,54 @@ class Payment extends StatelessWidget {
                   "결제 수단",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
+                GridView.builder(
+                  itemCount: paymethod.length,
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                  ),
+                  itemBuilder: (BuildContext context, int index) {
+                    return Flexible(
+                        child: Card(
+                      child: Container(
+                          child: TextButton(
+                        onPressed: () {
+                          if (paymethod[index] == "카카오페이") {
+                            print("카카오페이");
+                          } else if (paymethod[index] == "신용카드") {
+                            print("신용카드");
+                          } else if (paymethod[index] == "계좌이체") {
+                            print("계좌이체");
+                          } else if (paymethod[index] == "네이버페이") {
+                            print("네이버페이");
+                          }
+                        },
+                        child: Text(
+                          paymethod[index],
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      )),
+                    ));
+                  },
+                ),
+                SizedBox(height: 30),
+                Container(
+                  width: w,
+                  height: 45,
+                  child: RaisedButton(
+                    onPressed: () {
+                      print("버튼 클릭");
+                    },
+                    child: Text('50,000원 결제하기'),
+                    textColor: Colors.white,
+                    elevation: 10,
+                    color: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                )
               ],
             ))));
   }
