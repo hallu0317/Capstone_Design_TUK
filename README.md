@@ -16,8 +16,8 @@
 - VERSION CONTROL 
 - TEAMWORK 
 
-<h3> 팀원 구성<br>
-- 팀장 김지원 hallu0317 <br>
+<h2> 팀원 구성</h3><br>
+- <h4>팀장 김지원 hallu0317</h4> <br>
 - 팀원 한경완 hssum9409 <br>
 - 팀원 이봉희 hae8064 <br>
 - 팀원 최성락 rakseong <br>
