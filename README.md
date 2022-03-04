@@ -11,8 +11,7 @@
 - 모바일키 제공을 통해 관리부담 완화 및 범죄 예방
 - 기존 스마트도어락 대비 저렴한 가격의 서비스 제공
 <h4>
-- IDEs  : <img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white"/><br>
-- FRAMEWORK   <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"/><br>
+- IDEs / FRAMEWORK<br><img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white"/> <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"/><br>
 - LANGUAGE   <img src="https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" /><br>
 - VERSION CONTROL   <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/><br> 
 - TEAMWORK   <img src="https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white"/><br>
