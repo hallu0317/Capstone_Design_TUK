@@ -10,14 +10,14 @@
 - 애플리케이션을 통해 호텔 예약시스템과 일원화된 체크인/체크아웃, 모바일 키 시스템 제공
 - 모바일키 제공을 통해 관리부담 완화 및 범죄 예방
 - 기존 스마트도어락 대비 저렴한 가격의 서비스 제공
-
+<h4>
 - FRAMEWORK 
 - LANGUAGE 
 - VERSION CONTROL 
 - TEAMWORK 
-
-<h2> 팀원 구성</h3><br>
-- <h4>팀장 김지원 hallu0317</h4> <br>
-- 팀원 한경완 hssum9409 <br>
-- 팀원 이봉희 hae8064 <br>
-- 팀원 최성락 rakseong <br>
+</h4>
+<h2> 팀원 구성</h3><br><br>
+<h4>팀장 김지원 hallu0317</h4> <br>
+<h4>팀원 한경완 hssum9409</h4> <br>
+<h4>팀원 이봉희 hae8064</h4> <br>
+<h4>팀원 최성락 rakseong</h4> <br>
