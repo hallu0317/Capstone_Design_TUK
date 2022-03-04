@@ -22,4 +22,4 @@
 * 팀원 한경완 hssum9409 <br>
 * 팀원 이봉희 hae8064 <br>
 * 팀원 최성락 rakseong <br></h4>
-[![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)]
+[![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
