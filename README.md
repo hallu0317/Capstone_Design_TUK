@@ -11,7 +11,7 @@
 - 모바일키 제공을 통해 관리부담 완화 및 범죄 예방
 - 기존 스마트도어락 대비 저렴한 가격의 서비스 제공
 <h4>
-- IDEs / FRAMEWORK   <br><img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white"/> <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"/><br>
+- IDEs / FRAMEWORK<br><img src="https://img.shields.io/badge/Android%20Studio-3DDC84.svg?style=for-the-badge&logo=android-studio&logoColor=white"/> <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white"/><br>
   
 - LANGUAGE<br><img src="https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" /><br>
 - VERSION CONTROL<br><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white"/><br> 
@@ -23,4 +23,3 @@
 * 팀원 한경완 hssum9409 <br>
 * 팀원 이봉희 hae8064 <br>
 * 팀원 최성락 rakseong <br></h4>
-<img src="https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" />
