@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/payment.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
+import 'package:flutter_login/reservationAlert.dart';
 import 'package:get/get.dart';
 
 //MainHome화면
@@ -21,8 +23,11 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
+  String name = "";
+
   @override
   Widget build(BuildContext context) {
+    fireStoreReadName();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -45,7 +50,7 @@ class _MainHomeState extends State<MainHome> {
                   backgroundColor: Colors.white,
                 ),
                 accountName: Text(
-                  'NAME',
+                  name,
                   style: TextStyle(color: Colors.black),
                 ),
                 accountEmail: Text(
@@ -148,6 +153,7 @@ class _MainHomeState extends State<MainHome> {
                               onPressed: () {
                                 print("Open!!");
                                 readData();
+                                print(name);
                               },
                               icon: Icon(Icons.lock_open),
                               iconSize: 60.0,
@@ -216,5 +222,16 @@ class _MainHomeState extends State<MainHome> {
         ),
       ),
     );
+  }
+
+  void fireStoreReadName() {
+    FirebaseFirestore.instance
+        .collection("member")
+        .doc("${AuthController.instance.auth.currentUser!.email}")
+        .get()
+        .then((value) {
+      // print(value.data()?["name"]);
+      name = value.data()?["name"];
+    });
   }
 }

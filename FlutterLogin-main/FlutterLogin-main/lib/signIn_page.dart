@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/googleSignIn.dart';
+import 'package:flutter_login/googleSignInInfo.dart';
 import 'package:flutter_login/signup_page.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +16,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   var _emailController = TextEditingController();
   var _passwordController = TextEditingController();
+  var keyCheck = 1; //이메일로 로그인됐을 때...
+  var checkCheck = 4; //구글 한번 로그인 되었을 때
 
   //SnS 로그인 image 리스트
   List images = ["google.png", "twitter.png", "facebook.jpg"];
@@ -195,7 +198,8 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         AuthController.instance.login(
                             _emailController.text.trim(),
-                            _passwordController.text.trim());
+                            _passwordController.text.trim(),
+                            keyCheck.toString());
                       },
                       child: Center(
                         child: Text(
@@ -233,7 +237,9 @@ class _LoginPageState extends State<LoginPage> {
                         child: FlatButton(
                           onPressed: () {
                             if (index == 0) {
-                              signInWithGoogle(); //googleSiginIn메소드에 정의 됨
+                              AuthController.instance
+                                  .keyCheck(checkCheck.toString());
+                              signInWithGoogle();
                               print("구글 로그인 버튼클릭!!");
                             } else {
                               print("다른 버튼클릭 됨!");
