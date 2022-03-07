@@ -235,11 +235,12 @@ class _LoginPageState extends State<LoginPage> {
                       return Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: FlatButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (index == 0) {
                               AuthController.instance
                                   .keyCheck(checkCheck.toString());
                               signInWithGoogle();
+
                               print("구글 로그인 버튼클릭!!");
                             } else {
                               print("다른 버튼클릭 됨!");

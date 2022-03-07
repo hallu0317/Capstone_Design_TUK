@@ -50,7 +50,7 @@ class _MainHomeState extends State<MainHome> {
                   backgroundColor: Colors.white,
                 ),
                 accountName: Text(
-                  name,
+                  "${name}",
                   style: TextStyle(color: Colors.black),
                 ),
                 accountEmail: Text(
@@ -152,8 +152,6 @@ class _MainHomeState extends State<MainHome> {
                             IconButton(
                               onPressed: () {
                                 print("Open!!");
-                                readData();
-                                print(name);
                               },
                               icon: Icon(Icons.lock_open),
                               iconSize: 60.0,
@@ -230,7 +228,7 @@ class _MainHomeState extends State<MainHome> {
         .doc("${AuthController.instance.auth.currentUser!.email}")
         .get()
         .then((value) {
-      // print(value.data()?["name"]);
+      print(value.data()?["name"]);
       name = value.data()?["name"];
     });
   }

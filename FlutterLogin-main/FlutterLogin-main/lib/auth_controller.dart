@@ -33,7 +33,7 @@ class AuthController extends GetxController {
       Get.to(() => LoginPage());
     } else {
       print("회원가입 성공!");
-      print(checkCheck2);
+      print(keyCheck2);
       // Get.offAll(() => MainHome(email: user.email!));
       if (keyCheck2 == "1") {
         Get.offAll(() => MainHome(email: user.email!));
@@ -51,8 +51,8 @@ class AuthController extends GetxController {
                 email: user.email!,
               ));
         }
-
-        Get.to(() => GoogleSignInInfo());
+        Get.offAll(() => MainHome(email: user.email!));
+        // Get.to(() => GoogleSignInInfo());
 
         // if (checkCheck2 == 4) {
         //   Get.offAll(() => MainHome(email: user.email!));

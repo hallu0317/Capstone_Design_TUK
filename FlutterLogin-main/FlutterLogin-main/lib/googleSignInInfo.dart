@@ -222,8 +222,8 @@ class GoogleSignInInfo extends StatelessWidget {
                               updateMemberData();
                               // Get.to(() => AuthController(),
                               //     arguments: checkCheck);
-                              AuthController.instance
-                                  .keyCheck(checkCheck.toString());
+                              // AuthController.instance
+                              //     .keyCheck(checkCheck.toString());\
                               Get.offAll(MainHome(
                                   email: AuthController
                                       .instance.auth.currentUser!.email!));
