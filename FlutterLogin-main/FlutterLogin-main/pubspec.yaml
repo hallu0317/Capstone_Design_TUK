@@ -74,6 +74,7 @@ flutter:
     - img/room_img/Deluxe.PNG
     - img/room_img/Executive.PNG
     - img/room_img/Suite.PNG
+    - img/Logo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
