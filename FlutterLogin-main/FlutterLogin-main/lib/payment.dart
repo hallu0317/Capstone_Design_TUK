@@ -219,16 +219,21 @@ class _PaymentState extends State<Payment> {
                     ),
                   ],
                 ),
-                Divider(color: Colors.green[100], thickness: 2.0),
-                const Text(
-                  "예약자 정보",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                Divider(color: Colors.grey, thickness: 1.5),
+                Column(
+                  children: [
+                    const Text(
+                      "예약자 정보",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20.0),
+                    ),
+                    const Text(
+                      "김지원 / 010-1111-2222",
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                  ],
                 ),
-                const Text(
-                  "김지원 / 010-1111-2222",
-                  style: TextStyle(fontSize: 15.0),
-                ),
-                Divider(color: Colors.green[100], thickness: 2.0),
+                Divider(color: Colors.grey, thickness: 1.5),
                 const Text(
                   "결제 수단",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
@@ -241,8 +246,7 @@ class _PaymentState extends State<Payment> {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return Flexible(
-                        child: Card(
-                      child: Container(
+                      child: Card(
                           child: TextButton(
                         onPressed: () {
                           if (paymethod[index] == "카카오페이") {
@@ -262,7 +266,7 @@ class _PaymentState extends State<Payment> {
                           ),
                         ),
                       )),
-                    ));
+                    );
                   },
                 ),
                 SizedBox(height: 30),

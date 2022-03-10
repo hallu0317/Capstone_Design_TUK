@@ -114,7 +114,7 @@ class GoogleSignInInfo extends StatelessWidget {
                 height: h * 0.125,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("img/ex1.PNG"),
+                    image: AssetImage("img/Logo.png"),
                     fit: BoxFit.fill,
                   ),
                 ),
