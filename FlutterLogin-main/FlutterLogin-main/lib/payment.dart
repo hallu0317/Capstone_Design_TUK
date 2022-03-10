@@ -4,7 +4,6 @@ import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/mainHome.dart';
 import 'package:flutter_login/myProfile.dart';
-import 'package:flutter_login/paymethod.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
@@ -20,6 +19,14 @@ class Payment extends StatefulWidget {
 class _PaymentState extends State<Payment> {
   DateTime _selectedDate_in = DateTime.now();
   DateTime _selectedDate_out = DateTime.now();
+  var paymethod = [
+    "카카오페이",
+    "신용카드",
+    "계좌이체",
+    "네이버페이",
+    "PAYPAL",
+  ];
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -239,11 +246,11 @@ class _PaymentState extends State<Payment> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
                 GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5,
+                  ),
                   itemCount: paymethod.length,
                   shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                  ),
                   itemBuilder: (BuildContext context, int index) {
                     return Flexible(
                       child: Card(
@@ -257,19 +264,21 @@ class _PaymentState extends State<Payment> {
                             print("계좌이체");
                           } else if (paymethod[index] == "네이버페이") {
                             print("네이버페이");
+                          } else if (paymethod[index] == "PAYPAL") {
+                            print("PAYPAL");
                           }
                         },
                         child: Text(
                           paymethod[index],
                           style: TextStyle(
                             color: Colors.black,
+                            fontSize: 12.5,
                           ),
                         ),
                       )),
                     );
                   },
                 ),
-                SizedBox(height: 30),
                 Container(
                   width: w,
                   height: 45,
