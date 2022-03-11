@@ -107,7 +107,7 @@ class GoogleSignInInfo extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 24,
+                height: 26,
               ),
               Container(
                 width: w,

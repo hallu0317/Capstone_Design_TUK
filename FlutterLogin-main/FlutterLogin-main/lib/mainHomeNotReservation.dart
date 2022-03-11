@@ -123,7 +123,7 @@ Widget mainHome2() {
                                       .instance.auth.currentUser!.email!));
                             },
                             child: Text(
-                              "호텔 예약 하러가기",s
+                              "호텔 예약 하러가기",
                               style:
                                   TextStyle(fontSize: 14.0, color: Colors.grey),
                             ),

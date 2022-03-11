@@ -4,8 +4,44 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_login/auth_controller.dart';
 
 // 컬렉션 필드값 읽기
+
+//전역변수 사용
+var userName = "";
+var userPhone = "";
+var userReservation = false;
+
+void initState() async {
+  FirebaseFirestore.instance
+      .collection("member")
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    print("@@" + value.data()?["name"]);
+    userName = value.data()?["name"];
+  });
+
+// UserDB 핸드폰 번호 조회
+  FirebaseFirestore.instance
+      .collection('member')
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    userPhone = value.data()?["phone"];
+  });
+
+//UserDB 예약 여부 조회
+  FirebaseFirestore.instance
+      .collection('member')
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    userReservation = value.data()?["reservation"];
+  });
+}
+
 void readData() {
   String userName = "";
+
   Map userData = {};
 
   final userCollectionReference = FirebaseFirestore.instance
@@ -32,13 +68,32 @@ void readData() {
   //           })
   //         });
 
-  FirebaseFirestore.instance
-      .collection("member")
-      .doc("${AuthController.instance.auth.currentUser!.email}")
-      .get()
-      .then((value) {
-    // print(value.data()?["name"]);
-    userName = value.data()?["name"];
-  });
   // print("@@@@@이름 ${userName}");
+}
+
+class UserDB {
+  String userName = "";
+  bool reservation = false;
+
+  UserDB({
+    required this.userName,
+    required this.reservation,
+  });
+
+  void readDataName() {
+    FirebaseFirestore.instance
+        .collection("member")
+        .doc("${AuthController.instance.auth.currentUser!.email}")
+        .get()
+        .then((value) {
+      // print(value.data()?["name"]);
+      userName = value.data()!["name"];
+      return userName;
+    });
+  }
+}
+
+class UserManager {
+  late UserDB _userDB;
+  UserDB get user => _userDB;
 }

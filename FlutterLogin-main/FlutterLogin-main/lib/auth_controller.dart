@@ -5,6 +5,7 @@ import 'package:flutter_login/mainHome.dart';
 import 'package:flutter_login/signIn_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'fireStore.dart' as userDB;
 
 class AuthController extends GetxController {
   static AuthController instance = Get.find();
@@ -34,6 +35,7 @@ class AuthController extends GetxController {
     } else {
       print("회원가입 성공!");
       print(keyCheck2);
+
       // Get.offAll(() => MainHome(email: user.email!));
       if (keyCheck2 == "1") {
         Get.offAll(() => MainHome(email: user.email!));

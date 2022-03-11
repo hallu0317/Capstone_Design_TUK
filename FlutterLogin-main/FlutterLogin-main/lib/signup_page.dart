@@ -36,6 +36,7 @@ class SignUpPage extends StatelessWidget {
         'email': _emailController.text,
         "name": _nameController.text,
         "phone": _phoneNumberController.text,
+        "reservation": false,
       });
     }
 

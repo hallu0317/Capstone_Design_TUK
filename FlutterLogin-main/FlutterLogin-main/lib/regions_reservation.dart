@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/mainHome.dart';
-import 'package:flutter_login/myProfile.dart';
+import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
@@ -72,7 +72,7 @@ class _ReservationState extends State<Reservation> {
                   title: Text('MyProfile'),
                   onTap: () {
                     print('profile is clicked');
-                    Get.to(MyProfile(email: widget.email));
+                    Get.to(MyProfileNotReservation(email: widget.email));
                   }),
               ListTile(
                   leading: Icon(Icons.settings),
