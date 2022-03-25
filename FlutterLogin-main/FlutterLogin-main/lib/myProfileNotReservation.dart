@@ -83,11 +83,15 @@ class MyProfileNotReservation extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Center(
-            child: Text(
-              "$email님 환영합니다.",
-              style: TextStyle(fontSize: 20.0),
-            ),
+          // Center(
+          //   child: Text(
+          //     "$email님 환영합니다.",
+          //     style: TextStyle(fontSize: 20.0),
+          //   ),
+          // ),
+          Container(
+            height: 180,
+            color: Colors.blue[200],
           ),
         ],
       ),

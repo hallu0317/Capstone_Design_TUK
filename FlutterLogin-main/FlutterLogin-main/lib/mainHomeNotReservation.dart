@@ -10,6 +10,7 @@ import 'regions.dart';
 import 'regions_reservation.dart';
 
 Widget mainHome2() {
+  dbName.initState();
   return MaterialApp(
     debugShowCheckedModeBanner: false,
     home: Scaffold(

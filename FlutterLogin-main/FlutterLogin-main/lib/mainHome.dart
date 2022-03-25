@@ -32,6 +32,7 @@ class _MainHomeState extends State<MainHome> {
       return mainHome2();
     } else {
       fireStoreReadName();
+      dbName.initState();
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(

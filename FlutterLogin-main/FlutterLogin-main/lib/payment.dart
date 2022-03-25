@@ -7,6 +7,7 @@ import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
+import 'bootpay.dart';
 
 class Payment extends StatefulWidget {
   final String email;
@@ -260,6 +261,8 @@ class _PaymentState extends State<Payment> {
                             print("카카오페이");
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
+                            TestPageState().goBootpayRequest(context);
+                            // Get.to(TestPage());
                           } else if (paymethod[index] == "계좌이체") {
                             print("계좌이체");
                           } else if (paymethod[index] == "네이버페이") {
