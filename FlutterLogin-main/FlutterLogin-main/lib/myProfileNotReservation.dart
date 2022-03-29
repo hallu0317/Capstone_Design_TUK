@@ -92,7 +92,7 @@ class MyProfileNotReservation extends StatelessWidget {
           Container(
             height: 200.0,
             width: MediaQuery.of(context).size.width,
-            color: Colors.blue[200],
+            color: Colors.blue[100],
             padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
             child: Column(
               children: [
@@ -176,7 +176,17 @@ class MyProfileNotReservation extends StatelessWidget {
                   thickness: 2.0,
                 ),
                 Row(
-                  children: [],
+                  children: [
+                    Icon(
+                      Icons.lock,
+                      size: 40.0,
+                    ),
+                    SizedBox(width: 10.0),
+                    Text(
+                      "비밀번호 변경",
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    )
+                  ],
                 )
               ],
             ),
