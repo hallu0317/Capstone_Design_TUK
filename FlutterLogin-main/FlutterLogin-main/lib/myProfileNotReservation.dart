@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart' as dbName;
 import 'package:flutter_login/mainHome.dart';
 import 'package:get/get.dart';
+import 'regions_reservation.dart';
 
 class MyProfileNotReservation extends StatelessWidget {
   final String email;
@@ -12,10 +15,13 @@ class MyProfileNotReservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey[400],
         title: Text(
           "My Profile",
-          style: TextStyle(fontSize: 20.0),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
+        elevation: 0.0, //앱바의 입체감을 없애주기위함
+        centerTitle: true,
       ),
       drawer: Drawer(
         child: ListView(
@@ -83,24 +89,98 @@ class MyProfileNotReservation extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // Center(
-          //   child: Text(
-          //     "$email님 환영합니다.",
-          //     style: TextStyle(fontSize: 20.0),
-          //   ),
-          // ),
           Container(
-            height: 180,
+            height: 200.0,
+            width: MediaQuery.of(context).size.width,
             color: Colors.blue[200],
+            padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
             child: Column(
               children: [
                 CircleAvatar(
                   radius: 60.0,
                   backgroundImage: AssetImage('img/face_image.PNG'),
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                Text(
+                  AuthController.instance.auth.currentUser!.email!,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.bold),
                 )
               ],
             ),
           ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Text(
+                  "예약 정보 없음",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 3.0),
+                ),
+                TextButton(
+                    onPressed: () {
+                      Get.to(Reservation(
+                          email: AuthController
+                              .instance.auth.currentUser!.email!));
+                    },
+                    child: Text("예약 하러 가기")),
+              ],
+            ),
+          ),
+          Divider(
+            thickness: 2.0,
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.person,
+                      size: 40.0,
+                    ),
+                    SizedBox(width: 10.0),
+                    Text(
+                      dbName.userName,
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    )
+                  ],
+                ),
+                Divider(
+                  thickness: 2.0,
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.call,
+                      size: 40.0,
+                    ),
+                    SizedBox(width: 10.0),
+                    Text(
+                      dbName.userPhone,
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    )
+                  ],
+                ),
+                Divider(
+                  thickness: 2.0,
+                ),
+                Row(
+                  children: [],
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
