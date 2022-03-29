@@ -92,6 +92,14 @@ class MyProfileNotReservation extends StatelessWidget {
           Container(
             height: 180,
             color: Colors.blue[200],
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 60.0,
+                  backgroundImage: AssetImage('img/face_image.PNG'),
+                )
+              ],
+            ),
           ),
         ],
       ),
