@@ -12,6 +12,7 @@ import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:flutter_login/reservationAlert.dart';
 import 'package:get/get.dart';
+import 'myProfile.dart';
 
 //MainHome화면
 class MainHome extends StatefulWidget {
@@ -82,9 +83,15 @@ class _MainHomeState extends State<MainHome> {
                     title: Text('MyProfile'),
                     onTap: () {
                       print('profile is clicked');
-                      Get.to(MyProfileNotReservation(
-                          email: AuthController
-                              .instance.auth.currentUser!.email!));
+                      if (dbName.userReservation == false) {
+                        Get.to(MyProfileNotReservation(
+                            email: AuthController
+                                .instance.auth.currentUser!.email!));
+                      } else {
+                        Get.to(MyProfile(
+                            email: AuthController
+                                .instance.auth.currentUser!.email!));
+                      }
                     }),
                 ListTile(
                     leading: Icon(Icons.settings),

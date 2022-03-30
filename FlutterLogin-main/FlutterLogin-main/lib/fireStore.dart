@@ -11,7 +11,7 @@ var userPhone = "";
 var userReservation = false;
 
 void initState() async {
-  //userDB 이름 조회 후 변수값에 저장 
+  //userDB 이름 조회 후 변수값에 저장
   FirebaseFirestore.instance
       .collection("member")
       .doc("${AuthController.instance.auth.currentUser!.email}")
