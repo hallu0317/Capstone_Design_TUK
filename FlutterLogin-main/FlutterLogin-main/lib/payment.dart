@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart';
+import 'package:flutter_login/kakaopay.dart';
 import 'package:flutter_login/mainHome.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
+import 'package:flutter_login/naverpay.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
@@ -259,6 +261,7 @@ class _PaymentState extends State<Payment> {
                         onPressed: () {
                           if (paymethod[index] == "카카오페이") {
                             print("카카오페이");
+                            kakaoPageState().goBootpayRequest(context);
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
                             TestPageState().goBootpayRequest(context);
@@ -267,6 +270,7 @@ class _PaymentState extends State<Payment> {
                             print("계좌이체");
                           } else if (paymethod[index] == "네이버페이") {
                             print("네이버페이");
+                            NaverPageState().goBootpayRequest(context);
                           } else if (paymethod[index] == "PAYPAL") {
                             print("PAYPAL");
                           }
