@@ -3,12 +3,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
-import 'package:flutter_login/fireStore.dart';
+import 'package:flutter_login/fireStore.dart' as dbName;
 import 'package:flutter_login/mainHome.dart';
+import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:flutter_login/regions_reservation.dart';
 import 'package:flutter_login/regions.dart';
 import 'package:get/get.dart';
+
+import 'announcement.dart';
 
 class Reservation extends StatefulWidget {
   final String email;
@@ -46,7 +49,8 @@ class _ReservationState extends State<Reservation> {
                   backgroundColor: Colors.white,
                 ),
                 accountName: Text(
-                  'NAME',
+                  // dbName.userName,
+                  dbName.userName,
                   style: TextStyle(color: Colors.black),
                 ),
                 accountEmail: Text(
@@ -63,16 +67,25 @@ class _ReservationState extends State<Reservation> {
                 leading: Icon(Icons.home),
                 title: Text('Home'),
                 onTap: () {
-                  Get.to(MainHome(email: widget.email));
                   print("홈버튼!!!!");
+                  Get.to(MainHome(
+                      email: AuthController.instance.auth.currentUser!.email!));
                 },
               ),
               ListTile(
                   leading: Icon(Icons.person),
                   title: Text('MyProfile'),
                   onTap: () {
-                    print('profile is clicked');
-                    Get.to(MyProfileNotReservation(email: widget.email));
+                    if (dbName.userReservation == true) {
+                      print('profile is clicked');
+                      Get.to(MyProfile(
+                          email: AuthController
+                              .instance.auth.currentUser!.email!));
+                    } else {
+                      Get.to(MyProfileNotReservation(
+                          email: AuthController
+                              .instance.auth.currentUser!.email!));
+                    }
                   }),
               ListTile(
                   leading: Icon(Icons.settings),
@@ -81,10 +94,11 @@ class _ReservationState extends State<Reservation> {
                     print('Setting is clicked');
                   }),
               ListTile(
-                  leading: Icon(Icons.question_answer_outlined),
-                  title: Text('Q&A'),
+                  leading: Icon(Icons.announcement),
+                  title: Text('announcement'),
                   onTap: () {
-                    print('Q&A is clicked');
+                    Get.to(Announcement());
+                    print('announcement is clicked');
                   }),
               ListTile(
                   leading: Icon(Icons.logout),
@@ -93,7 +107,8 @@ class _ReservationState extends State<Reservation> {
                     print('로그아웃');
                     AuthController.instance.logOut();
                   })
-            ], //Home, MyProfile, Setting, Q&A, Logout
+            ],
+            //Home, MyProfile, Setting, Q&A, Logout
           ),
         ),
         body: SingleChildScrollView(

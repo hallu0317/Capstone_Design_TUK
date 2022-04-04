@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login/announcement.dart';
 import 'package:flutter_login/auth_controller.dart';
+import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:get/get.dart';
 import 'fireStore.dart' as dbName;
@@ -33,7 +35,8 @@ Widget mainHome2() {
                 backgroundColor: Colors.white,
               ),
               accountName: Text(
-                "${dbName.userName}",
+                // dbName.userName,
+                dbName.userName,
                 style: TextStyle(color: Colors.black),
               ),
               accountEmail: Text(
@@ -50,18 +53,25 @@ Widget mainHome2() {
               leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
+                print("홈버튼!!!!");
                 Get.to(MainHome(
                     email: AuthController.instance.auth.currentUser!.email!));
-                print("홈버튼!!!!");
               },
             ),
             ListTile(
                 leading: Icon(Icons.person),
                 title: Text('MyProfile'),
                 onTap: () {
-                  print('profile is clicked');
-                  Get.to(MyProfileNotReservation(
-                      email: AuthController.instance.auth.currentUser!.email!));
+                  if (dbName.userReservation == true) {
+                    print('profile is clicked');
+                    Get.to(MyProfile(
+                        email:
+                            AuthController.instance.auth.currentUser!.email!));
+                  } else {
+                    Get.to(MyProfileNotReservation(
+                        email:
+                            AuthController.instance.auth.currentUser!.email!));
+                  }
                 }),
             ListTile(
                 leading: Icon(Icons.settings),
@@ -70,10 +80,11 @@ Widget mainHome2() {
                   print('Setting is clicked');
                 }),
             ListTile(
-                leading: Icon(Icons.question_answer_outlined),
-                title: Text('Q&A'),
+                leading: Icon(Icons.announcement),
+                title: Text('announcement'),
                 onTap: () {
-                  print('Q&A is clicked');
+                  Get.to(Announcement());
+                  print('announcement is clicked');
                 }),
             ListTile(
                 leading: Icon(Icons.logout),

@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login/announcement.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart' as dbName;
 import 'package:flutter_login/mainHomeNotReservation.dart';
@@ -57,7 +58,8 @@ class _MainHomeState extends State<MainHome> {
                     backgroundColor: Colors.white,
                   ),
                   accountName: Text(
-                    "${name}",
+                    // dbName.userName,
+                    dbName.userName,
                     style: TextStyle(color: Colors.black),
                   ),
                   accountEmail: Text(
@@ -74,21 +76,23 @@ class _MainHomeState extends State<MainHome> {
                   leading: Icon(Icons.home),
                   title: Text('Home'),
                   onTap: () {
-                    Get.to(MainHome(email: widget.email));
                     print("홈버튼!!!!");
+                    Get.to(MainHome(
+                        email:
+                            AuthController.instance.auth.currentUser!.email!));
                   },
                 ),
                 ListTile(
                     leading: Icon(Icons.person),
                     title: Text('MyProfile'),
                     onTap: () {
-                      print('profile is clicked');
-                      if (dbName.userReservation == false) {
-                        Get.to(MyProfileNotReservation(
+                      if (dbName.userReservation == true) {
+                        print('profile is clicked');
+                        Get.to(MyProfile(
                             email: AuthController
                                 .instance.auth.currentUser!.email!));
                       } else {
-                        Get.to(MyProfile(
+                        Get.to(MyProfileNotReservation(
                             email: AuthController
                                 .instance.auth.currentUser!.email!));
                       }
@@ -100,10 +104,11 @@ class _MainHomeState extends State<MainHome> {
                       print('Setting is clicked');
                     }),
                 ListTile(
-                    leading: Icon(Icons.question_answer_outlined),
-                    title: Text('Q&A'),
+                    leading: Icon(Icons.announcement),
+                    title: Text('announcement'),
                     onTap: () {
-                      print('Q&A is clicked');
+                      Get.to(Announcement());
+                      print('announcement is clicked');
                     }),
                 ListTile(
                     leading: Icon(Icons.logout),

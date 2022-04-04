@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_login/announcement.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart' as dbName;
 import 'package:flutter_login/mainHome.dart';
+import 'package:flutter_login/myProfile.dart';
 import 'package:get/get.dart';
 import 'regions_reservation.dart';
 
@@ -60,9 +62,16 @@ class MyProfileNotReservation extends StatelessWidget {
                 leading: Icon(Icons.person),
                 title: Text('MyProfile'),
                 onTap: () {
-                  print('profile is clicked');
-                  Get.to(MyProfileNotReservation(
-                      email: AuthController.instance.auth.currentUser!.email!));
+                  if (dbName.userReservation == true) {
+                    print('profile is clicked');
+                    Get.to(MyProfile(
+                        email:
+                            AuthController.instance.auth.currentUser!.email!));
+                  } else {
+                    Get.to(MyProfileNotReservation(
+                        email:
+                            AuthController.instance.auth.currentUser!.email!));
+                  }
                 }),
             ListTile(
                 leading: Icon(Icons.settings),
@@ -71,10 +80,11 @@ class MyProfileNotReservation extends StatelessWidget {
                   print('Setting is clicked');
                 }),
             ListTile(
-                leading: Icon(Icons.question_answer_outlined),
-                title: Text('Q&A'),
+                leading: Icon(Icons.announcement),
+                title: Text('announcement'),
                 onTap: () {
-                  print('Q&A is clicked');
+                  Get.to(Announcement());
+                  print('announcement is clicked');
                 }),
             ListTile(
                 leading: Icon(Icons.logout),
