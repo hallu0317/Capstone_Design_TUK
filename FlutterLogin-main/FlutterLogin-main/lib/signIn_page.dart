@@ -242,6 +242,8 @@ class _LoginPageState extends State<LoginPage> {
                               signInWithGoogle();
 
                               print("구글 로그인 버튼클릭!!");
+                            } else if (index == 1) {
+                              print("zz");
                             } else {
                               print("다른 버튼클릭 됨!");
                             }
