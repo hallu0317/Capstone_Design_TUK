@@ -212,7 +212,7 @@ class _PaymentState extends State<Payment> {
                             width: 30.0,
                           ),
                           Text(
-                            '${_selectedDate_out.month.toString().padLeft(2, '0')}-${_selectedDate_out.day.toString().padLeft(2, '0')}',
+                            '${_selectedDate_out.month.toString().padLeft(2, '0')}-${(_selectedDate_out.day + 1).toString().padLeft(2, '0')}',
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -234,12 +234,12 @@ class _PaymentState extends State<Payment> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 20.0),
                     ),
-                    const Text(
-                      "TUK 호텔 스탠다드룸",
+                    Text(
+                      "TUK 호텔 ${dbName.userRoom}",
                       style: TextStyle(fontSize: 15.0),
                     ),
-                    const Text(
-                      "총 결제금액 : 50000원",
+                    Text(
+                      "총 결제금액 : ${dbName.cost}원",
                       style: TextStyle(fontSize: 15.0),
                     ),
                   ],
@@ -247,13 +247,13 @@ class _PaymentState extends State<Payment> {
                 Divider(color: Colors.grey, thickness: 1.5),
                 Column(
                   children: [
-                    const Text(
+                    Text(
                       "예약자 정보",
                       style: TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 20.0),
                     ),
-                    const Text(
-                      "김지원 / 010-1111-2222",
+                    Text(
+                      "${dbName.userName} / ${dbName.userPhone}",
                       style: TextStyle(fontSize: 15.0),
                     ),
                   ],
@@ -308,7 +308,7 @@ class _PaymentState extends State<Payment> {
                     onPressed: () {
                       print("버튼 클릭");
                     },
-                    child: Text('50,000원 결제하기'),
+                    child: Text('${dbName.cost}원 결제하기'),
                     textColor: Colors.white,
                     elevation: 10,
                     color: Colors.redAccent,

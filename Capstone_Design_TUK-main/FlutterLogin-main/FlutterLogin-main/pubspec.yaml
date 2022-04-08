@@ -40,6 +40,7 @@ dependencies:
   cloud_firestore: ^3.1.8
   bootpay: ^1.7.7
   bootpay_api: ^3.1.0
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
