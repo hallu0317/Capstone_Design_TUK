@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/googleSignIn.dart';
 import 'package:flutter_login/googleSignInInfo.dart';
+import 'package:flutter_login/kakaologin.dart';
 import 'package:flutter_login/signup_page.dart';
 import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -243,7 +245,9 @@ class _LoginPageState extends State<LoginPage> {
 
                               print("구글 로그인 버튼클릭!!");
                             } else if (index == 1) {
-                              print("zz");
+                              AuthController.instance
+                                  .keyCheck(checkCheck.toString());
+                              Kakaologin();
                             } else {
                               print("다른 버튼클릭 됨!");
                             }
