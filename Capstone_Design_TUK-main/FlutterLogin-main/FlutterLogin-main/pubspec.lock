@@ -120,6 +120,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.6"
   encrypt:
     dependency: transitive
     description:
@@ -195,6 +202,34 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_facebook_auth:
+    dependency: "direct main"
+    description:
+      name: flutter_facebook_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.5.7"
+  flutter_facebook_auth_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_facebook_auth_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.7.1"
+  flutter_facebook_auth_web:
+    dependency: transitive
+    description:
+      name: flutter_facebook_auth_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.6.0+2"
+  flutter_kakao_login:
+    dependency: "direct main"
+    description:
+      name: flutter_kakao_login
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.4.0"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -202,6 +237,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
+  flutter_login_facebook:
+    dependency: "direct main"
+    description:
+      name: flutter_login_facebook
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -248,7 +290,7 @@ packages:
     source: hosted
     version: "0.10.0+4"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -275,6 +317,76 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.4.0"
+  kakao_flutter_sdk:
+    dependency: "direct main"
+    description:
+      name: kakao_flutter_sdk
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_auth:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_common:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_common
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_link:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_link
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_navi:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_navi
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_story:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_story
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_talk:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_talk
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_template:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_template
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  kakao_flutter_sdk_user:
+    dependency: transitive
+    description:
+      name: kakao_flutter_sdk_user
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
   lints:
     dependency: transitive
     description:
@@ -282,6 +394,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  list_ext:
+    dependency: transitive
+    description:
+      name: list_ext
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   matcher:
     dependency: transitive
     description:
@@ -310,6 +429,48 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
+  package_info_plus:
+    dependency: transitive
+    description:
+      name: package_info_plus
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.0"
+  package_info_plus_linux:
+    dependency: transitive
+    description:
+      name: package_info_plus_linux
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
+  package_info_plus_macos:
+    dependency: transitive
+    description:
+      name: package_info_plus_macos
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.3.0"
+  package_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: package_info_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
+  package_info_plus_web:
+    dependency: transitive
+    description:
+      name: package_info_plus_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
+  package_info_plus_windows:
+    dependency: transitive
+    description:
+      name: package_info_plus_windows
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   path:
     dependency: transitive
     description:
