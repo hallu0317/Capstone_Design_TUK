@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
+import 'package:flutter_login/detail/standardDetail.dart';
 import 'package:flutter_login/fireStore.dart';
 import 'package:flutter_login/mainHome.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
@@ -19,6 +21,8 @@ class Reservation extends StatefulWidget {
 }
 
 class _ReservationState extends State<Reservation> {
+  var choiceRoom = ""; //선택 된 방
+
   DateTime _selectedDate_in = DateTime.now();
   DateTime _selectedDate_out = DateTime.now();
   @override
@@ -180,7 +184,7 @@ class _ReservationState extends State<Reservation> {
                         width: 30.0,
                       ),
                       Text(
-                        '${_selectedDate_out.month.toString().padLeft(2, '0')}-${_selectedDate_out.day.toString().padLeft(2, '0')}',
+                        '${_selectedDate_out.month.toString().padLeft(2, '0')}-${(_selectedDate_out.day + 1).toString().padLeft(2, '0')}',
                         style: TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
@@ -216,12 +220,32 @@ class _ReservationState extends State<Reservation> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('스탠다드',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2.0,
-                                color: Colors.grey[600])),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('스탠다드',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    color: Colors.grey[600])),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey, // Background color
+                              ),
+                              // style: ButtonStyle(backgroundColor: Colors.accents),
+                              onPressed: () {
+                                choiceRoom = "스탠다드(Standard)";
+                                updateMemberData();
+                                Get.to(() => StandardDetail());
+                              },
+                              child: Text(
+                                "예약하기",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                         Text('아늑하면서 효율적인 공간',
                             style: TextStyle(
                                 fontSize: 13,
@@ -272,12 +296,31 @@ class _ReservationState extends State<Reservation> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('디럭스',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2.0,
-                                color: Colors.grey[600])),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('디럭스',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    color: Colors.grey[600])),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey, // Background color
+                              ),
+                              // style: ButtonStyle(backgroundColor: Colors.accents),
+                              onPressed: () {
+                                choiceRoom = "디럭스(Deluxe)";
+                                updateMemberData();
+                              },
+                              child: Text(
+                                "예약하기",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                         Text('여유로운 휴식을 위한 공간',
                             style: TextStyle(
                                 fontSize: 13,
@@ -321,19 +364,41 @@ class _ReservationState extends State<Reservation> {
                       ),
                     ),
                   ),
-                  Image(image: AssetImage("img/room_img/Executive.PNG")),
+                  InkWell(
+                      onTap: () {},
+                      child: Image(
+                          image: AssetImage("img/room_img/Executive.PNG"))),
                   Container(
                     padding: EdgeInsets.all(10.0),
                     alignment: Alignment.centerLeft,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('이그제큐티브',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2.0,
-                                color: Colors.grey[600])),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('이그제큐티브',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    color: Colors.grey[600])),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey, // Background color
+                              ),
+                              // style: ButtonStyle(backgroundColor: Colors.accents),
+                              onPressed: () {
+                                choiceRoom = "이그제큐티브(Executive)";
+                                updateMemberData();
+                              },
+                              child: Text(
+                                "예약하기",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                         Text('휴식이 필요한 비즈니스 고객을 위한 공간',
                             style: TextStyle(
                                 fontSize: 13,
@@ -384,12 +449,31 @@ class _ReservationState extends State<Reservation> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('스위트',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2.0,
-                                color: Colors.grey[600])),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('스위트',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                    color: Colors.grey[600])),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey, // Background color
+                              ),
+                              // style: ButtonStyle(backgroundColor: Colors.accents),
+                              onPressed: () {
+                                choiceRoom = "슈페리어(Superior)";
+                                updateMemberData();
+                              },
+                              child: Text(
+                                "예약하기",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                         Text('모던한 분위기의 고급스러운 공간',
                             style: TextStyle(
                                 fontSize: 13,
@@ -419,5 +503,16 @@ class _ReservationState extends State<Reservation> {
         ),
       ),
     );
+  }
+
+  final memberCollection = FirebaseFirestore.instance.collection("member");
+//회원가입 데이터 디비 저장
+  Future updateMemberData() async {
+    print("@@rooms 필드 값 변경!!");
+    return await memberCollection
+        .doc(AuthController.instance.auth.currentUser!.email!)
+        .update({
+      "rooms": choiceRoom,
+    });
   }
 }

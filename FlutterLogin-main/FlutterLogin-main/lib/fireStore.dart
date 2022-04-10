@@ -9,6 +9,10 @@ import 'package:flutter_login/auth_controller.dart';
 var userName = "";
 var userPhone = "";
 var userReservation = false;
+var checkInTime = "";
+var checkOutTime = "";
+var userRoom = ""; //선택한 방
+var cost = 0;
 
 void initState() async {
   //userDB 이름 조회 후 변수값에 저장
@@ -37,6 +41,39 @@ void initState() async {
       .get()
       .then((value) {
     userReservation = value.data()?["reservation"];
+  });
+
+//UserDB 선택한 Rooms 조회
+  await FirebaseFirestore.instance
+      .collection('member')
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    userRoom = value.data()?["rooms"];
+  });
+
+  await FirebaseFirestore.instance
+      .collection('hotel')
+      .doc("${userRoom}")
+      .get()
+      .then((value) {
+    checkInTime = value.data()?["CheckIn"];
+  });
+
+  await FirebaseFirestore.instance
+      .collection('hotel')
+      .doc("${userRoom}")
+      .get()
+      .then((value) {
+    checkOutTime = value.data()?["CheckOut"];
+  });
+
+  await FirebaseFirestore.instance
+      .collection('hotel')
+      .doc("${userRoom}")
+      .get()
+      .then((value) {
+    cost = value.data()?["cost"];
   });
 }
 
