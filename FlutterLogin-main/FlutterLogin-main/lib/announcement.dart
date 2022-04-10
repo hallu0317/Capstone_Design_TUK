@@ -15,7 +15,7 @@ class Announcement extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey[400],
         title: Text(
-          "My Profile",
+          "AnnounceMent",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
         elevation: 0.0, //앱바의 입체감을 없애주기위함
@@ -87,10 +87,96 @@ class Announcement extends StatelessWidget {
         ),
       ),
       body: Column(children: [
-        Text("앱 사용법"),
-        Text(
-          "~~~~~~~~~~~~~~",
-        )
+        TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: new Text("앱 사용법 안내"),
+                    content: new Text("1. 회원가입 진행"),
+                    actions: [
+                      new TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("Close"))
+                    ],
+                  );
+                },
+              );
+            },
+            child: Text(
+              "1. 앱 사용법",
+              style: TextStyle(
+                  color: Colors.blue[300],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold),
+            )),
+        Divider(
+          thickness: 1,
+          color: Colors.black,
+        ),
+        TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: new Text("앱 사용법 안내"),
+                    content: new Text("1. 회원가입 진행"),
+                    actions: [
+                      new TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("Close"))
+                    ],
+                  );
+                },
+              );
+            },
+            child: Text(
+              "2. 호텔 이용시 유의 사항",
+              style: TextStyle(
+                  color: Colors.blue[300],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold),
+            )),
+        Divider(
+          thickness: 1,
+          color: Colors.black,
+        ),
+        TextButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: new Text("앱 사용법 안내"),
+                    content: new Text("1. 회원가입 진행"),
+                    actions: [
+                      new TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("Close"))
+                    ],
+                  );
+                },
+              );
+            },
+            child: Text(
+              "3. 버전 정보",
+              style: TextStyle(
+                  color: Colors.blue[300],
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold),
+            )),
+        Divider(
+          thickness: 1,
+          color: Colors.black,
+        ),
       ]),
     );
   }
