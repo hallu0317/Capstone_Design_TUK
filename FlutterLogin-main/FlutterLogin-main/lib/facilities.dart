@@ -257,7 +257,7 @@ class Facilities extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('사계절 이용 가능 풀',
+                              Text('TUK호텔 뷔페',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
@@ -276,7 +276,7 @@ class Facilities extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Text('TKU호텔의 사계절을 즐기는 쉼의 공간',
+                          Text('TUK호텔에서 제공하는 최고의 식사',
                               style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold,
@@ -285,6 +285,9 @@ class Facilities extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 20.0,
+                    )
                   ],
                 ),
               ),
