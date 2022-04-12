@@ -3,9 +3,11 @@ import 'package:flutter_login/announcement.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
+import 'package:flutter_login/swimming.dart';
 import 'package:get/get.dart';
 import 'fireStore.dart' as dbName;
 import 'mainHome.dart';
+import 'fitness.dart';
 
 class Facilities extends StatelessWidget {
   const Facilities({Key? key}) : super(key: key);
@@ -142,7 +144,9 @@ class Facilities extends StatelessWidget {
                                   primary: Colors.grey, // Background color
                                 ),
                                 // style: ButtonStyle(backgroundColor: Colors.accents),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.to(Swimming());
+                                },
                                 child: Text(
                                   "자세히 보기",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -205,7 +209,9 @@ class Facilities extends StatelessWidget {
                                   primary: Colors.grey, // Background color
                                 ),
                                 // style: ButtonStyle(backgroundColor: Colors.accents),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.to(Fitness());
+                                },
                                 child: Text(
                                   "자세히 보기",
                                   style: TextStyle(fontWeight: FontWeight.bold),

@@ -90,6 +90,14 @@ flutter:
     - img/facility/fitness.PNG
     - img/facility/restaurant.PNG
     - img/facility/swimming_pool.PNG
+    - img/swimmingDetail/swimming_detail1.PNG
+    - img/swimmingDetail/swimming_detail2.PNG
+    - img/swimmingDetail/swimming_detail3.PNG
+    - img/swimmingDetail/swimming_detail4.PNG
+    - img/fitnessDetail/fitness_detail1.PNG
+    - img/fitnessDetail/fitness_detail2.PNG
+    - img/fitnessDetail/fitness_detail3.PNG
+    - img/fitnessDetail/fitness_detail4.PNG
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
