@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'fireStore.dart' as dbName;
 import 'mainHome.dart';
 import 'fitness.dart';
+import 'restaurant.dart';
 
 class Facilities extends StatelessWidget {
   const Facilities({Key? key}) : super(key: key);
@@ -274,7 +275,9 @@ class Facilities extends StatelessWidget {
                                   primary: Colors.grey, // Background color
                                 ),
                                 // style: ButtonStyle(backgroundColor: Colors.accents),
-                                onPressed: () async {},
+                                onPressed: () async {
+                                  Get.to(Restaurant());
+                                },
                                 child: Text(
                                   "자세히 보기",
                                   style: TextStyle(fontWeight: FontWeight.bold),

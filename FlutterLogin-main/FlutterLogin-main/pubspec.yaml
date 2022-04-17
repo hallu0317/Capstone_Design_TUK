@@ -98,6 +98,11 @@ flutter:
     - img/fitnessDetail/fitness_detail2.PNG
     - img/fitnessDetail/fitness_detail3.PNG
     - img/fitnessDetail/fitness_detail4.PNG
+    - img/restaurantDetail/restaurant_detail1.PNG
+    - img/restaurantDetail/restaurant_detail2.PNG
+    - img/restaurantDetail/restaurant_detail3.PNG
+    - img/restaurantDetail/restaurant_detail4.PNG
+    - img/restaurantDetail/restaurant_reservation.PNG
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
