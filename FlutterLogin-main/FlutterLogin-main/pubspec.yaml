@@ -41,6 +41,7 @@ dependencies:
   bootpay: ^1.7.7
   bootpay_api: ^3.1.0
   carousel_slider: ^4.0.0
+  image_picker: ^0.8.1
 
 dev_dependencies:
   flutter_test:
