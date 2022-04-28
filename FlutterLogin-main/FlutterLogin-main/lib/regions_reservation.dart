@@ -30,7 +30,7 @@ class _ReservationState extends State<Reservation> {
   var choiceRoom = ""; //선택 된 방
 
   DateTime _selectedDate_in = DateTime.now();
-  DateTime _selectedDate_out = DateTime.now();
+  DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -487,7 +487,7 @@ class _ReservationState extends State<Reservation> {
                               ),
                               // style: ButtonStyle(backgroundColor: Colors.accents),
                               onPressed: () async {
-                                choiceRoom = "슈페리어(Superior)";
+                                choiceRoom = "Superior";
                                 await updateMemberData();
                                 dbName.initState();
                                 Get.to(() => SuperiorDetail());

@@ -15,6 +15,7 @@ import 'package:flutter_login/reservationAlert.dart';
 import 'package:get/get.dart';
 import 'myProfile.dart';
 import 'package:flutter_login/facilities.dart';
+import 'package:flutter_login/reservationCheck.dart';
 
 //MainHome화면
 class MainHome extends StatefulWidget {
@@ -223,6 +224,7 @@ class _MainHomeState extends State<MainHome> {
                                     if (regions[index] == "예약") {
                                       Get.to(Reservation(email: widget.email));
                                     } else if (regions[index] == "예약 조회") {
+                                      Get.to(reservationCheck());
                                       print("예약 조회 클릭");
                                     } else if (regions[index] == "시설 이용") {
                                       Get.to(Facilities());
