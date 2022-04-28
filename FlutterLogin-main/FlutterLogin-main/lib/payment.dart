@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_login/announcement.dart';
@@ -277,15 +278,18 @@ class _PaymentState extends State<Payment> {
                           if (paymethod[index] == "카카오페이") {
                             print("카카오페이");
                             kakaoPageState().goBootpayRequest(context);
+                            dbName.userReservation = true;
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
                             TestPageState().goBootpayRequest(context);
+                            dbName.userReservation = true;
                             // Get.to(TestPage());
                           } else if (paymethod[index] == "계좌이체") {
                             print("계좌이체");
                           } else if (paymethod[index] == "네이버페이") {
                             print("네이버페이");
                             NaverPageState().goBootpayRequest(context);
+                            dbName.userReservation = true;
                           } else if (paymethod[index] == "PAYPAL") {
                             print("PAYPAL");
                           }
@@ -307,6 +311,8 @@ class _PaymentState extends State<Payment> {
                   child: RaisedButton(
                     onPressed: () {
                       print("버튼 클릭");
+                      print(dbName.userReservation);
+                      updateMemberData();
                     },
                     child: Text('${dbName.cost}원 결제하기'),
                     textColor: Colors.white,
@@ -318,5 +324,16 @@ class _PaymentState extends State<Payment> {
                 )
               ],
             ))));
+  }
+
+  final memberCollection = FirebaseFirestore.instance.collection("member");
+//회원가입 데이터 디비 저장
+  Future updateMemberData() async {
+    print("@@reservation 필드 값 변경!!");
+    return await memberCollection
+        .doc(AuthController.instance.auth.currentUser!.email!)
+        .update({
+      "reservation": true,
+    });
   }
 }

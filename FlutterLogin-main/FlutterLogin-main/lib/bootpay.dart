@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 import 'package:bootpay_api/bootpay_api.dart';
 import 'package:bootpay_api/model/payload.dart';
