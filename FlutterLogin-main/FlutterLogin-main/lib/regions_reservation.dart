@@ -30,7 +30,7 @@ class _ReservationState extends State<Reservation> {
   var choiceRoom = ""; //선택 된 방
 
   DateTime _selectedDate_in = DateTime.now();
-  DateTime _selectedDate_out = DateTime.now();
+  DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -175,6 +175,8 @@ class _MainHomeState extends State<MainHome> {
                               IconButton(
                                 onPressed: () {
                                   print("Open!!");
+                                  updateOrderData();
+                                  updateMemberData();
                                   print(dbName.userName);
                                 },
                                 icon: Icon(Icons.lock_open),
@@ -256,6 +258,24 @@ class _MainHomeState extends State<MainHome> {
         .then((value) {
       print(value.data()?["name"]);
       name = value.data()?["name"];
+    });
+  }
+
+  final orderCollection = FirebaseFirestore.instance.collection("order");
+//도어락 오픈시 order 필드 값 true변경
+  Future updateOrderData() async {
+    print("@@order 필드 값 변경!!");
+    return await orderCollection.doc("raspberrypi").update({
+      "order": true,
+    });
+  }
+
+  final memberCollection = FirebaseFirestore.instance.collection("order");
+//도어락 open시 member필드에 이메일 값 저장
+  Future updateMemberData() async {
+    print("@@order member필드값 변경!");
+    return await memberCollection.doc("raspberrypi").update({
+      "member": AuthController.instance.auth.currentUser!.email,
     });
   }
 }
