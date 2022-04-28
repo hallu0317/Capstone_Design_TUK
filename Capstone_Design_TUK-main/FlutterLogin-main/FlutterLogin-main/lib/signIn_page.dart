@@ -240,10 +240,11 @@ class _LoginPageState extends State<LoginPage> {
                               AuthController.instance
                                   .keyCheck(checkCheck.toString());
                               signInWithGoogle();
-
                               print("구글 로그인 버튼클릭!!");
-                            } else {
-                              print("다른 버튼클릭 됨!");
+                            } else if (index == 1) {
+                              print("zz");
+                            } else if (index == 2) {
+                              print("다른 버튼클릭 됨22!");
                             }
                           },
                           child: CircleAvatar(

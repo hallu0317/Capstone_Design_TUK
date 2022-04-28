@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  kakao_flutter_sdk: ^1.1.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -41,6 +41,7 @@ dependencies:
   bootpay: ^1.7.7
   bootpay_api: ^3.1.0
   carousel_slider: ^4.0.0
+  image_picker: ^0.8.1
 
 dev_dependencies:
   flutter_test:
@@ -87,6 +88,22 @@ flutter:
     - img/deluxDetail/detaildel2.jpg
     - img/superiorDetail/detailsup1.jpg
     - img/superiorDetail/detailsup2.jpg
+    - img/facility/fitness.PNG
+    - img/facility/restaurant.PNG
+    - img/facility/swimming_pool.PNG
+    - img/swimmingDetail/swimming_detail1.PNG
+    - img/swimmingDetail/swimming_detail2.PNG
+    - img/swimmingDetail/swimming_detail3.PNG
+    - img/swimmingDetail/swimming_detail4.PNG
+    - img/fitnessDetail/fitness_detail1.PNG
+    - img/fitnessDetail/fitness_detail2.PNG
+    - img/fitnessDetail/fitness_detail3.PNG
+    - img/fitnessDetail/fitness_detail4.PNG
+    - img/restaurantDetail/restaurant_detail1.PNG
+    - img/restaurantDetail/restaurant_detail2.PNG
+    - img/restaurantDetail/restaurant_detail3.PNG
+    - img/restaurantDetail/restaurant_detail4.PNG
+    - img/restaurantDetail/restaurant_reservation.PNG
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -13,7 +13,8 @@ var checkInTime = "";
 var checkOutTime = "";
 var userRoom = ""; //선택한 방
 var cost = 0;
-
+var order = false;
+  
 void initState() async {
   //userDB 이름 조회 후 변수값에 저장
   FirebaseFirestore.instance
@@ -51,7 +52,17 @@ void initState() async {
       .then((value) {
     userRoom = value.data()?["rooms"];
   });
+  
+  //order 변경
+  await FirebaseFirestore.instance
+      .collection('order')
+      .doc("raspberrypi")
+      .get()
+      .then((value) {
+    order = value.data()?["order"];
+  });
 
+  //체크인 시간 확인
   await FirebaseFirestore.instance
       .collection('hotel')
       .doc("${userRoom}")

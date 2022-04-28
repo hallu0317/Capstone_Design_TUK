@@ -10,6 +10,7 @@ import 'mainHome.dart';
 import 'payment.dart';
 import 'regions.dart';
 import 'regions_reservation.dart';
+import 'facilities.dart';
 
 Widget mainHome2() {
   dbName.initState();
@@ -185,9 +186,7 @@ Widget mainHome2() {
                                 } else if (regions[index] == "예약 조회") {
                                   print("예약 조회 클릭");
                                 } else if (regions[index] == "시설 이용") {
-                                  Get.to(Payment(
-                                      email: AuthController
-                                          .instance.auth.currentUser!.email!));
+                                  Get.to(Facilities());
                                   print("시설 이용 클릭");
                                 }
                               },
