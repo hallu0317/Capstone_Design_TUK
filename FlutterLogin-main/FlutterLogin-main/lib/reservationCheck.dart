@@ -5,6 +5,7 @@ import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:flutter_login/swimming.dart';
 import 'package:get/get.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'fireStore.dart' as dbName;
 import 'mainHome.dart';
 import 'fitness.dart';
@@ -105,28 +106,54 @@ class reservationCheck extends StatelessWidget {
             const Image(
               image: AssetImage("img/room_img/Single.PNG"),
             ),
+            SizedBox(height: 20.0),
             const Text(
-              "예약자 정보",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
-            ),
-            Text(
-              "이름 ${dbName.userName}\n"
-              "전화번호 ${dbName.userPhone}\n"
-              "이메일 ${AuthController.instance.auth.currentUser!.email!}",
-              style: TextStyle(fontSize: 15.0),
-            ),
-            Text(
               "예약 내역",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
             ),
             Text(
-              "TUK 호텔 ${dbName.userRoom}\n"
+              "                TUK 호텔 ${dbName.userRoom}\n"
               "체크인/체크아웃 시간 : 15:00 ~ 12:00",
               style: TextStyle(fontSize: 15.0),
             ),
+            SizedBox(height: 10.0),
+            Divider(color: Colors.grey, thickness: 1.5),
+            Text(
+              "예약자 정보",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            ),
+            Text(
+              "이름            ${dbName.userName}\n"
+              "전화번호    ${dbName.userPhone}\n"
+              "이메일        ${AuthController.instance.auth.currentUser!.email!}",
+              style: TextStyle(fontSize: 15.0),
+            ),
+            SizedBox(height: 10.0),
+            Divider(color: Colors.grey, thickness: 1.5),
             Text(
               "결제 내역",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+            ),
+            Text(
+              "총 결제금액 : ${dbName.cost}원",
+              style: TextStyle(fontSize: 15.0),
+            ),
+            Divider(color: Colors.grey, thickness: 1.5),
+            SizedBox(height: 30.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey, // Background color
+              ),
+              // style: ButtonStyle(backgroundColor: Colors.accents),
+              onPressed: () async {
+                Get.to(() => MainHome(
+                      email: '',
+                    ));
+              },
+              child: Text(
+                "메인화면으로 이동",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         )),
