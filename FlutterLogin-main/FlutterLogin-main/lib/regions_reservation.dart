@@ -253,7 +253,7 @@ class _ReservationState extends State<Reservation> {
                               ),
                               // style: ButtonStyle(backgroundColor: Colors.accents),
                               onPressed: () async {
-                                choiceRoom = "스탠다드(Standard)";
+                                choiceRoom = "Standard";
                                 updateMemberData();
                                 dbName.initState();
                                 await Get.to(() => StandardDetail());
@@ -330,7 +330,7 @@ class _ReservationState extends State<Reservation> {
                               ),
                               // style: ButtonStyle(backgroundColor: Colors.accents),
                               onPressed: () async {
-                                choiceRoom = "디럭스(Deluxe)";
+                                choiceRoom = "Deluxe";
                                 updateMemberData();
                                 dbName.initState();
                                 await Get.to(() => DeluxDetail());
@@ -410,7 +410,7 @@ class _ReservationState extends State<Reservation> {
                               ),
                               // style: ButtonStyle(backgroundColor: Colors.accents),
                               onPressed: () async {
-                                choiceRoom = "이그제큐티브(Executive)";
+                                choiceRoom = "Executive";
                                 await updateMemberData();
                                 dbName.initState();
                                 Get.to(() => ExecutiveDetail());

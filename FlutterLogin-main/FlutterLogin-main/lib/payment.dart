@@ -24,7 +24,7 @@ class Payment extends StatefulWidget {
 
 class _PaymentState extends State<Payment> {
   DateTime _selectedDate_in = DateTime.now();
-  DateTime _selectedDate_out = DateTime.now();
+  DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
   var paymethod = [
     "카카오페이",
     "신용카드",
@@ -213,7 +213,7 @@ class _PaymentState extends State<Payment> {
                             width: 30.0,
                           ),
                           Text(
-                            '${_selectedDate_out.month.toString().padLeft(2, '0')}-${(_selectedDate_out.day + 1).toString().padLeft(2, '0')}',
+                            '${_selectedDate_out.month.toString().padLeft(2, '0')}-${(_selectedDate_out.day).toString().padLeft(2, '0')}',
                             style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -281,6 +281,7 @@ class _PaymentState extends State<Payment> {
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
+                            updateHotelData();
                             TestPageState().goBootpayRequest(context);
                             dbName.userReservation = true;
                             // Get.to(TestPage());
@@ -326,6 +327,7 @@ class _PaymentState extends State<Payment> {
             ))));
   }
 
+  final hotelCollection = FirebaseFirestore.instance.collection("hotel");
   final memberCollection = FirebaseFirestore.instance.collection("member");
 //회원가입 데이터 디비 저장
   Future updateMemberData() async {
@@ -334,6 +336,14 @@ class _PaymentState extends State<Payment> {
         .doc(AuthController.instance.auth.currentUser!.email!)
         .update({
       "reservation": true,
+    });
+  }
+
+  Future updateHotelData() async {
+    print("@@reservation 필드 값 변경!!");
+    return await hotelCollection.doc("Standard").update({
+      "CheckIn": _selectedDate_in.add(Duration(hours: 15)),
+      "CheckOut": _selectedDate_out.add(Duration(hours: 12)),
     });
   }
 }

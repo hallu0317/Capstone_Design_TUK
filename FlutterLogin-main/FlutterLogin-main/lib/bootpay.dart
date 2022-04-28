@@ -1,3 +1,4 @@
+import 'package:bootpay/bootpay.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
@@ -6,6 +7,10 @@ import 'package:bootpay_api/model/payload.dart';
 import 'package:bootpay_api/model/extra.dart';
 import 'package:bootpay_api/model/user.dart';
 import 'package:bootpay_api/model/item.dart';
+import 'package:flutter_login/auth_controller.dart';
+import 'package:flutter_login/mainHome.dart';
+import 'package:get/get.dart';
+import 'fireStore.dart' as dbName;
 
 class TestPage extends StatefulWidget {
   @override
@@ -65,7 +70,7 @@ class TestPageState extends State<TestPage> {
     payload.pg = 'danal';
 //    payload.method = 'card';
     payload.methods = ['card', 'phone', 'vbank', 'bank'];
-    payload.name = 'testUser';
+    payload.name = '${dbName.userRoom}';
     payload.price = 1000.0;
     payload.orderId = DateTime.now().millisecondsSinceEpoch.toString();
 //    payload.params = {
@@ -77,9 +82,9 @@ class TestPageState extends State<TestPage> {
 
     User user = User();
     user.username = "사용자 이름";
-    user.email = "user1234@gmail.com";
+    user.email = AuthController.instance.auth.currentUser!.email;
     user.area = "대한민국";
-    user.phone = "010-1234-4567";
+    user.phone = "${dbName.userPhone}";
 
     Extra extra = Extra();
     extra.appScheme = 'bootpayFlutterSample';
@@ -103,6 +108,15 @@ class TestPageState extends State<TestPage> {
       extra: extra,
       user: user,
       items: itemList,
+      onDone: (value) => Get.to(() =>
+          MainHome(email: AuthController.instance.auth.currentUser!.email!)),
     );
+
+    Bootpay().request(onClose: () {
+      print("------onClose");
+      Bootpay().dismiss(context);
+      Get.to(() =>
+          MainHome(email: AuthController.instance.auth.currentUser!.email!));
+    });
   }
 }

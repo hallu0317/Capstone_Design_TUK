@@ -152,7 +152,7 @@ class _MainHomeState extends State<MainHome> {
                                 ),
                               ),
                               Text(
-                                "TUK Hotel - 707호",
+                                "TUK Hotel - ${dbName.userRoom}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0),
