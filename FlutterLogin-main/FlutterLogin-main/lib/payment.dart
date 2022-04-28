@@ -301,21 +301,6 @@ class _PaymentState extends State<Payment> {
                     );
                   },
                 ),
-                Container(
-                  width: w,
-                  height: 45,
-                  child: RaisedButton(
-                    onPressed: () {
-                      print("버튼 클릭");
-                    },
-                    child: Text('${dbName.cost}원 결제하기'),
-                    textColor: Colors.white,
-                    elevation: 10,
-                    color: Colors.redAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                )
               ],
             ))));
   }

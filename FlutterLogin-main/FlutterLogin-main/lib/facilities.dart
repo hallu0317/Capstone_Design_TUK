@@ -21,7 +21,7 @@ class Facilities extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.grey[400],
           title: Text(
-            "TUK-Capstone",
+            "Facilites",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
           ),
           elevation: 0.0, //앱바의 입체감을 없애주기위함
