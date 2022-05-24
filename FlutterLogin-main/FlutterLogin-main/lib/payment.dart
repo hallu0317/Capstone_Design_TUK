@@ -24,7 +24,7 @@ class Payment extends StatefulWidget {
 
 class _PaymentState extends State<Payment> {
   DateTime _selectedDate_in = DateTime.now();
-  DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
+  DateTime _selectedDate_out = DateTime.now();
   var paymethod = [
     "카카오페이",
     "신용카드",
@@ -281,7 +281,6 @@ class _PaymentState extends State<Payment> {
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
-                            updateHotelData();
                             TestPageState().goBootpayRequest(context);
                             dbName.userReservation = true;
                             // Get.to(TestPage());
@@ -293,6 +292,7 @@ class _PaymentState extends State<Payment> {
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "PAYPAL") {
                             print("PAYPAL");
+                            updateHotelData();
                           }
                         },
                         child: Text(
@@ -306,12 +306,29 @@ class _PaymentState extends State<Payment> {
                     );
                   },
                 ),
+                Container(
+                  width: w,
+                  height: 45,
+                  child: RaisedButton(
+                    onPressed: () {
+                      print("버튼 클릭");
+                      print(dbName.userReservation);
+                      updateMemberData();
+                    },
+                    child: Text('${dbName.cost}원 결제하기'),
+                    textColor: Colors.white,
+                    elevation: 10,
+                    color: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                  ),
+                )
               ],
             ))));
   }
 
-  final hotelCollection = FirebaseFirestore.instance.collection("hotel");
   final memberCollection = FirebaseFirestore.instance.collection("member");
+  final hotelCollection = FirebaseFirestore.instance.collection("hotel");
 //회원가입 데이터 디비 저장
   Future updateMemberData() async {
     print("@@reservation 필드 값 변경!!");
@@ -323,10 +340,10 @@ class _PaymentState extends State<Payment> {
   }
 
   Future updateHotelData() async {
-    print("@@reservation 필드 값 변경!!");
+    print("@@CheckIn,CheckOut 필드 값 변경!!");
     return await hotelCollection.doc("Standard").update({
-      "CheckIn": _selectedDate_in.add(Duration(hours: 15)),
-      "CheckOut": _selectedDate_out.add(Duration(hours: 12)),
+      "CheckIn": _selectedDate_in.add(Duration(hours: 6)),
+      "CheckOut": _selectedDate_out.add(Duration(hours: 3)),
     });
   }
 }

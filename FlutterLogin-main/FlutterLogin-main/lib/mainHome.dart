@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login/add_auth.dart';
 import 'package:flutter_login/announcement.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/fireStore.dart' as dbName;
@@ -16,6 +17,7 @@ import 'package:get/get.dart';
 import 'myProfile.dart';
 import 'package:flutter_login/facilities.dart';
 import 'package:flutter_login/reservationCheck.dart';
+import 'add_auth.dart';
 
 //MainHome화면
 class MainHome extends StatefulWidget {
@@ -229,6 +231,9 @@ class _MainHomeState extends State<MainHome> {
                                     } else if (regions[index] == "시설 이용") {
                                       Get.to(Facilities());
                                       print("시설 이용 클릭");
+                                    } else if (regions[index] == "사용자 추가") {
+                                      Get.to(AddAuth());
+                                      print("사용자 추가 클릭");
                                     }
                                   },
                                   child: Text(
