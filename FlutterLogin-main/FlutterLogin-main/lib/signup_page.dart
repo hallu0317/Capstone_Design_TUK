@@ -9,85 +9,90 @@ import 'package:flutter_login/auth_controller.dart';
 import 'package:get/get.dart';
 import 'googleSignIn.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    //컨트롤러
-    var _emailController = TextEditingController();
-    var _passwordController = TextEditingController();
-    var _passwordConfirmController = TextEditingController();
-    var _nameController = TextEditingController();
-    var _phoneNumberController = TextEditingController();
+  _SignUpPageState createState() => _SignUpPageState();
+}
 
-    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-    final _auth = FirebaseAuth.instance;
+class _SignUpPageState extends State<SignUpPage> {
+  //컨트롤러
+  var _emailController = TextEditingController();
+  var _passwordController = TextEditingController();
+  var _passwordConfirmController = TextEditingController();
+  var _nameController = TextEditingController();
+  var _phoneNumberController = TextEditingController();
 
-    final _focusNode = FocusScopeNode();
+  //final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  final _auth = FirebaseAuth.instance;
 
-    String email2 = "";
-    String password2 = "";
+  //final _focusNode = FocusScopeNode();
+
+  String email2 = "";
+  String password2 = "";
 
 //DB collection 조회
-    final memberCollection = FirebaseFirestore.instance.collection("member");
+  final memberCollection = FirebaseFirestore.instance.collection("member");
 //회원가입 데이터 디비 저장
-    Future updateMemberData() async {
-      print("데이터 추가!!");
-      return await memberCollection.doc(_emailController.text).set({
-        'email': _emailController.text,
-        "name": _nameController.text,
-        "phone": _phoneNumberController.text,
-        "reservation": false,
-      });
-    }
+  Future updateMemberData() async {
+    print("데이터 추가!!");
+    return await memberCollection.doc(_emailController.text).set({
+      'email': _emailController.text,
+      "name": _nameController.text,
+      "phone": _phoneNumberController.text,
+      "reservation": false,
+    });
+  }
 
-    @override
-    void dispose() {
-      _emailController.dispose();
-      _passwordController.dispose();
-      _passwordConfirmController.dispose();
-    }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _passwordConfirmController.dispose();
+  }
 
 //비밀번호 일치하지 않을 때 에러처리
-    void FlutterDialog() {
-      showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0)),
-              title: Column(
-                children: [
-                  Text("Error"),
-                ],
-              ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "비밀번호가 일치하지 않습니다.",
-                  ),
-                ],
-              ),
-              actions: [
-                FlatButton(
-                    onPressed: () {
-                      Get.back();
-                      // Get.to(SignUpPage());
-                    },
-                    child: Text("확인")),
+  void FlutterDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)),
+            title: Column(
+              children: [
+                Text("Error"),
               ],
-            );
-          });
-    }
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "비밀번호가 일치하지 않습니다.",
+                ),
+              ],
+            ),
+            actions: [
+              FlatButton(
+                  onPressed: () {
+                    Get.back();
+                    // Get.to(SignUpPage());
+                  },
+                  child: Text("확인")),
+            ],
+          );
+        });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 
     return GestureDetector(
       onTap: () {
-        _focusNode.unfocus();
+        FocusScope.of(context).unfocus();
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -291,7 +296,6 @@ class SignUpPage extends StatelessWidget {
                           ]),
                       child: TextFormField(
                         controller: _phoneNumberController,
-                        obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Phone Number",
                           hintStyle: TextStyle(
