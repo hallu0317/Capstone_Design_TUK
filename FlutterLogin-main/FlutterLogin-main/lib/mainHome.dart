@@ -179,6 +179,7 @@ class _MainHomeState extends State<MainHome> {
                                   print("Open!!");
                                   updateOrderData();
                                   updateMemberData();
+                                  updateRoomData();
                                   print(dbName.userName);
                                 },
                                 icon: Icon(Icons.lock_open),
@@ -281,6 +282,15 @@ class _MainHomeState extends State<MainHome> {
     print("@@order member필드값 변경!");
     return await memberCollection.doc("raspberrypi").update({
       "member": AuthController.instance.auth.currentUser!.email,
+    });
+  }
+
+  final roomCollection = FirebaseFirestore.instance.collection("order");
+//도어락 open시 member필드에 이메일 값 저장
+  Future updateRoomData() async {
+    print("@@order member필드값 변경!");
+    return await roomCollection.doc("raspberrypi").update({
+      "roomtype": dbName.userRoom,
     });
   }
 }
