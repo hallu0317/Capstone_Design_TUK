@@ -200,15 +200,7 @@ class _MainHomeState extends State<MainHome> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "예약 지역 선택",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                    children: [],
                   ),
                 ),
                 GridView.builder(

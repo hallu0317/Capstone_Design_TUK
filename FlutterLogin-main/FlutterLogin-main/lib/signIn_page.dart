@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   var checkCheck = 4; //구글 한번 로그인 되었을 때
 
   //SnS 로그인 image 리스트
-  List images = ["google.png", "twitter.png", "facebook.jpg"];
+  //List images = ["google.png", "twitter.png", "facebook.jpg"];
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +41,17 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 24,
+                  height: 5,
                 ),
                 Container(
                   width: w,
                   height: h * 0.125,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("img/Logo.png"),
+                      image: AssetImage(""),
                       fit: BoxFit.fill,
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20.0,
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
@@ -64,26 +61,28 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Center(
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('img/TUK.PNG'),
-                          radius: 40.0,
-                        ),
-                      ),
-                      Center(
-                        child: Text(
-                          "Smart Doorlock",
-                          style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue[400]),
+                          backgroundImage: AssetImage('img/tuklogo.PNG'),
+                          radius: 65.0,
                         ),
                       ),
                       SizedBox(
-                        height: 40,
+                        height: 20.0,
+                      ),
+                      Center(
+                        child: Text(
+                          "Hotel Service Doorlock",
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 37, 90, 166)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
                       ),
                       Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
                                 spreadRadius: 7,
@@ -97,37 +96,38 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             hintText: "Email",
                             hintStyle: TextStyle(
+                              fontSize: 18,
                               color: Colors.grey,
                             ),
                             prefixIcon: Icon(
                               Icons.email,
-                              color: Colors.blue[100],
+                              color: Color.fromARGB(255, 37, 90, 166),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide:
                                   BorderSide(color: Colors.white, width: 1.0),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(
                                 color: Colors.white,
                                 width: 1.0,
                               ),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Container(
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             boxShadow: [
                               BoxShadow(
                                 spreadRadius: 7,
@@ -142,26 +142,27 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: InputDecoration(
                             hintText: "Password",
                             hintStyle: TextStyle(
+                              fontSize: 18,
                               color: Colors.grey,
                             ),
                             prefixIcon: Icon(
                               Icons.lock,
-                              color: Colors.blue[100],
+                              color: Color.fromARGB(255, 37, 90, 166),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide:
                                   BorderSide(color: Colors.white, width: 1.0),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                               borderSide: BorderSide(
                                 color: Colors.white,
                                 width: 1.0,
                               ),
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                           ),
                         ),
@@ -174,28 +175,21 @@ class _LoginPageState extends State<LoginPage> {
                           Expanded(
                             child: Container(),
                           ),
-                          // Text(
-                          //   "정보를 입력 해 주세요",
-                          //   style: TextStyle(
-                          //     fontSize: 20,
-                          //     color: Colors.grey[500],
-                          //   ),
-                          // ),
                         ],
                       )
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 35,
                 ),
                 Container(
-                  height: 50.0,
-                  width: w * 0.35,
+                  height: 40.0,
+                  width: w * 0.30,
                   child: Material(
                     elevation: 5.0,
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: Colors.blue[200],
+                    borderRadius: BorderRadius.circular(15.0),
+                    color: Color.fromARGB(255, 37, 90, 166),
                     child: MaterialButton(
                       onPressed: () {
                         AuthController.instance.login(
@@ -207,8 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           "로그인",
                           style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
                             color: Colors.white,
                           ),
                         ),
@@ -217,9 +210,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
-                Center(
+                /*Center(
                   child: RichText(
                     text: TextSpan(
                       text: "아래 SNS 계정 선택 가능",
@@ -265,26 +258,33 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     }),
                   ),
-                ),
+                ),*/
                 SizedBox(
                   height: w * 0.05,
                 ),
                 RichText(
                   text: TextSpan(
-                    text: "계정이 없으신가요?",
-                    style: TextStyle(color: Colors.grey[500], fontSize: 20),
+                    text: "계정이 없으신가요? ",
+                    style: TextStyle(color: Colors.grey[500], fontSize: 17),
                     children: [
                       TextSpan(
                           text: " 회원가입",
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 20,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () => Get.to(() => SignUpPage())),
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 60,
+                ),
+                Image.asset(
+                  "img/epic.PNG",
+                  width: 80,
+                )
               ],
             ),
           ),

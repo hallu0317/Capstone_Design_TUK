@@ -24,7 +24,7 @@ class Payment extends StatefulWidget {
 
 class _PaymentState extends State<Payment> {
   DateTime _selectedDate_in = DateTime.now();
-  DateTime _selectedDate_out = DateTime.now();
+  DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
   var paymethod = [
     "카카오페이",
     "신용카드",
@@ -282,6 +282,7 @@ class _PaymentState extends State<Payment> {
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
                             TestPageState().goBootpayRequest(context);
+                            updateMemberData();
                             dbName.userReservation = true;
                             // Get.to(TestPage());
                           } else if (paymethod[index] == "계좌이체") {
@@ -315,7 +316,7 @@ class _PaymentState extends State<Payment> {
                       print(dbName.userReservation);
                       updateMemberData();
                     },
-                    child: Text('${dbName.cost}원 결제하기'),
+                    child: Text('50,000원 결제하기'),
                     textColor: Colors.white,
                     elevation: 10,
                     color: Colors.redAccent,
