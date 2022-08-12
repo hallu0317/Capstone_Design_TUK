@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:get/get.dart';
 import 'googleSignIn.dart';
+import 'myProfile.dart';
+import 'myProfileNotReservation.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -95,28 +97,23 @@ class _SignUpPageState extends State<SignUpPage> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 39, 52, 80),
+          title: Text(
+            "회원가입",
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          elevation: 0.0, //앱바의 입체감을 없애주기위함
+          centerTitle: true,
+        ),
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 24,
-              ),
               Container(
                 width: w,
-                height: h * 0.125,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("img/Logo.png"),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(height: 0.1),
-                  ],
-                ),
+                height: 10,
               ),
               Container(
                 width: w,
@@ -130,7 +127,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
@@ -147,15 +144,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           prefixIcon: Icon(
                             Icons.account_circle_rounded,
-                            color: Colors.blue[100],
+                            color: Color.fromARGB(255, 37, 90, 166),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
@@ -163,12 +160,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
@@ -185,15 +182,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           prefixIcon: Icon(
                             Icons.email,
-                            color: Colors.blue[100],
+                            color: Color.fromARGB(255, 37, 90, 166),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
@@ -201,12 +198,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
@@ -224,15 +221,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           prefixIcon: Icon(
                             Icons.lock,
-                            color: Colors.blue[100],
+                            color: Color.fromARGB(255, 37, 90, 166),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
@@ -241,12 +238,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
@@ -264,15 +261,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           prefixIcon: Icon(
                             Icons.lock_outline,
-                            color: Colors.blue[100],
+                            color: Color.fromARGB(255, 37, 90, 166),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
@@ -281,12 +278,12 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 10,
@@ -303,15 +300,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                           prefixIcon: Icon(
                             Icons.app_settings_alt,
-                            color: Colors.blue[100],
+                            color: Color.fromARGB(255, 37, 90, 166),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(10),
                             borderSide:
                                 BorderSide(color: Colors.white, width: 1.0),
                           ),
@@ -326,8 +323,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         width: w / 2,
                         child: Material(
                           elevation: 5.0,
-                          borderRadius: BorderRadius.circular(30.0),
-                          color: Colors.blue[200],
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: Color.fromARGB(255, 37, 90, 166),
                           child: MaterialButton(
                             onPressed: () {
                               if (_passwordController.value ==
@@ -346,7 +343,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               child: Text(
                                 "회원가입",
                                 style: TextStyle(
-                                  fontSize: 26,
+                                  fontSize: 22,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white,
                                 ),
@@ -357,7 +354,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Center(
                       child: RichText(
@@ -366,11 +363,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               ..onTap = () => Get.back(),
                             text: "이미 계정이 존재하나요?",
                             style: TextStyle(
-                                fontSize: 20, color: Colors.grey[500])),
+                                fontSize: 17, color: Colors.grey[500])),
                       ),
-                    ),
-                    SizedBox(
-                      height: h * 0.1,
                     ),
                   ],
                 ),

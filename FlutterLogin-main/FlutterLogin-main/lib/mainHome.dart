@@ -43,11 +43,11 @@ class _MainHomeState extends State<MainHome> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.grey[400],
+            backgroundColor: Color.fromARGB(255, 39, 52, 80),
             title: Text(
               "TUK-Capstone",
               style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
             elevation: 0.0, //앱바의 입체감을 없애주기위함
             centerTitle: true,
@@ -129,7 +129,7 @@ class _MainHomeState extends State<MainHome> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 20.0,
+                  height: 30.0,
                 ),
                 Center(
                   child: Stack(
@@ -139,9 +139,7 @@ class _MainHomeState extends State<MainHome> {
                         height: 350,
                         padding: const EdgeInsets.all(20.0),
                         decoration: new BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey[350],
-                        ),
+                            shape: BoxShape.circle, color: Colors.grey[300]),
                         child: Container(
                           decoration: BoxDecoration(
                               shape: BoxShape.circle, color: Colors.white),

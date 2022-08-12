@@ -35,10 +35,10 @@ class _FitnessState extends State<Fitness> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey[400],
+          backgroundColor: Color.fromARGB(255, 39, 52, 80),
           title: Text(
             "Fitness Center",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
           elevation: 0.0, //앱바의 입체감을 없애주기위함
           centerTitle: true,
@@ -194,27 +194,23 @@ class _FitnessState extends State<Fitness> {
                 SizedBox(
                   width: 20.0,
                 ),
-                
               ],
             ),
-            Row(
-              children:[
-                Text(
-                  "대여 품목 ",
-                  style: TextStyle(color: Colors.brown[300], fontSize: 14.0),
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text("트레이닝 복(무료), 양말(무료)")
-              ]
-            ),
+            Row(children: [
+              Text(
+                "대여 품목 ",
+                style: TextStyle(color: Colors.brown[300], fontSize: 14.0),
+              ),
+              SizedBox(
+                width: 10.0,
+              ),
+              Text("트레이닝 복(무료), 양말(무료)")
+            ]),
             SizedBox(
               height: 20.0,
             ),
             Text(
                 "- 체육관은 만 16세 이상 고객에 한해 입장 가능합니다.\n- 고객 여러분의 안전을 위하여 음주 후 체육관, 사우나, 실내 수영장 등의 피트니스 시설 이용은 제한될 수 있습니다.\n- 실내 체육관 입장 시 반드시 운동복과 실내용 운동화를 착용해 주시기 바랍니다.\n- 코로나19 확산 방지를 위해 운동화 대여 서비스를 제공하지 않습니다. 양해 부탁드립니다."),
-            
           ]),
         ),
       ),

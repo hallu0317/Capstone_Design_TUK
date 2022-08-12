@@ -17,10 +17,10 @@ class MyProfileNotReservation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Color.fromARGB(255, 39, 52, 80),
         title: Text(
           "My Profile",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         elevation: 0.0, //앱바의 입체감을 없애주기위함
         centerTitle: true,
