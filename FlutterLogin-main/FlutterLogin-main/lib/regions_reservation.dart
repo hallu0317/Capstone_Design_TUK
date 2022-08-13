@@ -27,9 +27,6 @@ class Reservation extends StatefulWidget {
 
 class _ReservationState extends State<Reservation> {
   var choiceRoom = ""; //선택 된 방
-
-  DateTime _selectedDate_in = DateTime.now();
-  DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,100 +47,6 @@ class _ReservationState extends State<Reservation> {
         ),
         body: SingleChildScrollView(
           child: Column(children: [
-            Container(
-              padding: EdgeInsets.all(10.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OutlinedButton(
-                          child: Text(
-                            "Check In",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          onPressed: () {
-                            Future<DateTime?> selected_in = showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate: DateTime.now(),
-                                lastDate:
-                                    DateTime.now().add(Duration(days: 365)),
-                                builder: (BuildContext context, Widget? child) {
-                                  return Theme(
-                                      data: ThemeData.light(), child: child!);
-                                });
-                            selected_in.then((selected_in) {
-                              setState(() {
-                                _selectedDate_in = selected_in!;
-                              });
-                            });
-                          }),
-                      SizedBox(
-                        width: 60.0,
-                      ),
-                      OutlinedButton(
-                          child: Text(
-                            "Check Out",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                          onPressed: () {
-                            Future<DateTime?> selected_out = showDatePicker(
-                                context: context,
-                                initialDate:
-                                    _selectedDate_in.add(Duration(days: 1)),
-                                firstDate:
-                                    _selectedDate_in.add(Duration(days: 1)),
-                                lastDate:
-                                    DateTime.now().add(Duration(days: 366)),
-                                builder: (BuildContext context, Widget? child) {
-                                  return Theme(
-                                      data: ThemeData.light(), child: child!);
-                                });
-                            selected_out.then((selected_out) {
-                              setState(() {
-                                _selectedDate_out = selected_out!;
-                              });
-                            });
-                          }),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '${_selectedDate_in.month.toString().padLeft(2, '0')}-${_selectedDate_in.day.toString().padLeft(2, '0')}',
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown[500]),
-                      ),
-                      SizedBox(
-                        width: 25.0,
-                      ),
-                      Text(
-                        "~",
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown[500]),
-                      ),
-                      SizedBox(
-                        width: 30.0,
-                      ),
-                      Text(
-                        '${_selectedDate_out.month.toString().padLeft(2, '0')}-${(_selectedDate_out.day + 1).toString().padLeft(2, '0')}',
-                        style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown[500]),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10.0),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.grey, width: 2),

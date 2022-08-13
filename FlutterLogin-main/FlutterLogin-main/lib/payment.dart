@@ -12,6 +12,7 @@ import 'package:flutter_login/naverpay.dart';
 import 'widget/appbar_widget.dart';
 import 'package:get/get.dart';
 import 'bootpay.dart';
+import 'package:intl/intl.dart';
 
 class Payment extends StatefulWidget {
   final String email;
@@ -24,6 +25,13 @@ class Payment extends StatefulWidget {
 class _PaymentState extends State<Payment> {
   DateTime _selectedDate_in = DateTime.now();
   DateTime _selectedDate_out = DateTime.now().add(Duration(days: 1));
+  String _inyear = "";
+  String _outyear = "";
+  String _inday = "";
+  String _outday = "";
+  String _inmonth = "";
+  String _outmonth = "";
+
   var paymethod = [
     "카카오페이",
     "신용카드",
@@ -84,6 +92,8 @@ class _PaymentState extends State<Payment> {
                                 selected_in.then((selected_in) {
                                   setState(() {
                                     _selectedDate_in = selected_in!;
+                                    _selectedDate_out =
+                                        selected_in!.add(Duration(days: 1));
                                   });
                                 });
                               }),
@@ -271,9 +281,25 @@ class _PaymentState extends State<Payment> {
 
   Future updateHotelData() async {
     print("@@CheckIn,CheckOut 필드 값 변경!!");
+    _inyear = DateFormat("yyyy").format(_selectedDate_in);
+    _outyear = DateFormat("yyyy").format(_selectedDate_out);
+    _inmonth = DateFormat("MM").format(_selectedDate_in);
+    _outmonth = DateFormat("MM").format(_selectedDate_out);
+    _inday = DateFormat("dd").format(_selectedDate_in);
+    _outday = DateFormat("dd").format(_selectedDate_out);
+    int uinyear = int.parse(_inyear);
+    int uoutyear = int.parse(_outyear);
+    int uinday = int.parse(_inday);
+    int uoutday = int.parse(_outday);
+    int uinmonth = int.parse(_inmonth);
+    int uoutmonth = int.parse(_outmonth);
     return await hotelCollection.doc("Standard").update({
-      "CheckIn": _selectedDate_in.add(Duration(hours: 6)),
-      "CheckOut": _selectedDate_out.add(Duration(hours: 3)),
+      "checkInYear": uinyear,
+      "checkOutYear": uoutyear,
+      "checkInDay": uinday,
+      "checkOutDay": uoutday,
+      "checkInMonth": uinmonth,
+      "checkOutMonth": uoutmonth,
     });
   }
 }
