@@ -93,7 +93,7 @@ class _PaymentState extends State<Payment> {
                                   setState(() {
                                     _selectedDate_in = selected_in!;
                                     _selectedDate_out =
-                                        selected_in!.add(Duration(days: 1));
+                                        selected_in.add(Duration(days: 1));
                                   });
                                 });
                               }),
