@@ -67,7 +67,7 @@ class _MainHomeState extends State<MainHome> {
                     children: [
                       Container(
                         width: 350,
-                        height: 350,
+                        height: 340,
                         padding: const EdgeInsets.all(20.0),
                         decoration: new BoxDecoration(
                             shape: BoxShape.circle, color: Colors.grey[300]),
@@ -90,7 +90,7 @@ class _MainHomeState extends State<MainHome> {
                                     fontSize: 20.0),
                               ),
                               SizedBox(
-                                height: 20.0,
+                                height: 15.0,
                               ),
                               Text(
                                 "체크인: 15:00",
