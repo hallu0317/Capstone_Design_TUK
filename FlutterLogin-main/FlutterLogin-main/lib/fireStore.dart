@@ -11,6 +11,8 @@ var userPhone = "";
 var userReservation = false;
 var checkInTime = "";
 var checkOutTime = "";
+var checkInDay = "";
+var checkOutDay = "";
 var userRoom = ""; //선택한 방
 var cost = 0;
 var order = false;
@@ -77,6 +79,24 @@ void initState() async {
       .get()
       .then((value) {
     checkOutTime = value.data()?["CheckOut"];
+  });
+
+  await FirebaseFirestore.instance
+      .collection('hotel')
+      .doc("${userRoom}")
+      .get()
+      .then((value) {
+    checkOutDay =
+        value.data()?["checkOutMonth"] + "-" + value.data()?["checkOutDay"];
+  });
+
+  await FirebaseFirestore.instance
+      .collection('hotel')
+      .doc("${userRoom}")
+      .get()
+      .then((value) {
+    checkInDay =
+        value.data()?["checkInMonth"] + "-" + value.data()?["checkInDay"];
   });
 
   await FirebaseFirestore.instance

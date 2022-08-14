@@ -43,6 +43,7 @@ class reservationCheck extends StatelessWidget {
             ),
             Text(
               "                TUK 호텔 ${dbName.userRoom}\n"
+              "체크인/체크아웃 날짜 : ${dbName.checkInDay} ~ ${dbName.checkOutDay}\n"
               "체크인/체크아웃 시간 : 15:00 ~ 12:00",
               style: TextStyle(fontSize: 15.0),
             ),
