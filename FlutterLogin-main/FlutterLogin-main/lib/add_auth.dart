@@ -93,8 +93,28 @@ class AddAuth extends StatelessWidget {
                       "reservation": true,
                       "rooms": dbName.userRoom,
                     });
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                                content: Text("사용자가 등록되었습니다.\n"),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("Close"))
+                                ]));
                   } else {
                     print("No Exist");
+                    AlertDialog(
+                        content: Text("해당 사용자는 존재하지 않습니다.\n"),
+                        actions: [
+                          TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text("Close"))
+                        ]);
                   }
                   ;
                 });
