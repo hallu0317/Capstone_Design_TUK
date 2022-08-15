@@ -217,6 +217,7 @@ class _PaymentState extends State<Payment> {
                           if (paymethod[index] == "카카오페이") {
                             print("카카오페이");
                             kakaoPageState().goBootpayRequest(context);
+                            updateMemberData();
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "신용카드") {
                             print("신용카드");
@@ -229,6 +230,7 @@ class _PaymentState extends State<Payment> {
                           } else if (paymethod[index] == "네이버페이") {
                             print("네이버페이");
                             NaverPageState().goBootpayRequest(context);
+                            updateMemberData();
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "PAYPAL") {
                             print("PAYPAL");
@@ -246,23 +248,6 @@ class _PaymentState extends State<Payment> {
                     );
                   },
                 ),
-                Container(
-                  width: w,
-                  height: 45,
-                  child: RaisedButton(
-                    onPressed: () {
-                      print("버튼 클릭");
-                      print(dbName.userReservation);
-                      updateMemberData();
-                    },
-                    child: Text('50,000원 결제하기'),
-                    textColor: Colors.white,
-                    elevation: 10,
-                    color: Colors.redAccent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                  ),
-                )
               ],
             ))));
   }
