@@ -77,9 +77,9 @@ class reservationCheck extends StatelessWidget {
               ),
               // style: ButtonStyle(backgroundColor: Colors.accents),
               onPressed: () async {
-                Get.to(() => MainHome(
-                      email: '',
-                    ));
+                Get.to(MainHome(
+                  email: AuthController.instance.auth.currentUser!.email!,
+                ));
               },
               child: Text(
                 "메인화면으로 이동",
