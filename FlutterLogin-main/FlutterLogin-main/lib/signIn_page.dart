@@ -41,17 +41,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: w,
                   height: h * 0.125,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(""),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 20, right: 20),
