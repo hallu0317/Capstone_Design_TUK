@@ -86,8 +86,9 @@ void initState() async {
       .doc("${userRoom}")
       .get()
       .then((value) {
-    checkOutDay =
-        value.data()?["checkOutMonth"] + "-" + value.data()?["checkOutDay"];
+    var outday = value.data()?["checkOutDay"];
+    var outmonth = value.data()?["checkOutMonth"];
+    checkOutDay = outmonth.toString() + "-" + outday.toString();
   });
 
   await FirebaseFirestore.instance
@@ -95,8 +96,9 @@ void initState() async {
       .doc("${userRoom}")
       .get()
       .then((value) {
-    checkInDay =
-        value.data()?["checkInMonth"] + "-" + value.data()?["checkInDay"];
+    var inday = value.data()?["checkInDay"];
+    var inmonth = value.data()?["checkInMonth"];
+    checkInDay = inmonth.toString() + "-" + inday.toString();
   });
 
   await FirebaseFirestore.instance

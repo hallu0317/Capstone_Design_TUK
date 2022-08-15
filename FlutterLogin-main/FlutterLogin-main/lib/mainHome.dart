@@ -18,6 +18,7 @@ import 'myProfile.dart';
 import 'package:flutter_login/facilities.dart';
 import 'package:flutter_login/reservationCheck.dart';
 import 'add_auth.dart';
+import 'reservationCancel.dart';
 import 'widget/appbar_widget.dart';
 
 //MainHome화면
@@ -156,6 +157,9 @@ class _MainHomeState extends State<MainHome> {
                                     } else if (regions[index] == "사용자 추가") {
                                       Get.to(AddAuth());
                                       print("사용자 추가 클릭");
+                                    } else if (regions[index] == "예약 취소") {
+                                      Get.to(ReservationCancel());
+                                      print("예약 취소 클릭");
                                     }
                                   },
                                   child: Text(
