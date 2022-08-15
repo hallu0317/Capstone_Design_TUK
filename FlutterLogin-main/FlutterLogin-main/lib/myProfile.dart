@@ -175,19 +175,6 @@ class MyProfile extends StatelessWidget {
                 Divider(
                   thickness: 2.0,
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.lock,
-                      size: 40.0,
-                    ),
-                    SizedBox(width: 10.0),
-                    Text(
-                      "비밀번호 변경",
-                      style: TextStyle(color: Colors.black, fontSize: 20.0),
-                    )
-                  ],
-                )
               ],
             ),
           )

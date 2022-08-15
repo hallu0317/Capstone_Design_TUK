@@ -40,7 +40,7 @@ Widget mainHome2() {
                 children: [
                   Container(
                     width: 350,
-                    height: 350,
+                    height: 340,
                     padding: const EdgeInsets.all(20.0),
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
@@ -86,15 +86,6 @@ Widget mainHome2() {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "예약 지역 선택",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
               ),
             ),
             GridView.builder(
