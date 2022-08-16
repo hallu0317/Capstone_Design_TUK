@@ -43,7 +43,16 @@ class DrawerArea extends StatelessWidget implements PreferredSizeWidget {
             onTap: () {
               print("홈버튼!!!!");
               Get.to(MainHome(
-                  email: AuthController.instance.auth.currentUser!.email!));
+                email: AuthController.instance.auth.currentUser!.email!,
+              ));
+              /*Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MainHome(
+                            email: AuthController
+                                .instance.auth.currentUser!.email!,
+                          )));*/
             },
           ),
           ListTile(
