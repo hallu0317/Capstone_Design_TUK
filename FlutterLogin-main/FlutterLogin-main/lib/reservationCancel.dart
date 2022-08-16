@@ -156,9 +156,11 @@ class ReservationCancel extends StatelessWidget {
               ),
               // style: ButtonStyle(backgroundColor: Colors.accents),
               onPressed: () async {
-                Get.to(MainHome(
-                  email: AuthController.instance.auth.currentUser!.email!,
-                ));
+                Route route = MaterialPageRoute(
+                    builder: (context) => MainHome(
+                        email:
+                            AuthController.instance.auth.currentUser!.email!));
+                Navigator.pushReplacement(context, route);
               },
               child: Text(
                 "메인화면으로 이동",

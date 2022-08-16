@@ -7,11 +7,21 @@ import 'package:flutter_login/myProfile.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:get/get.dart';
 
-class DrawerArea extends StatelessWidget implements PreferredSizeWidget {
+class DrawerArea extends StatefulWidget implements PreferredSizeWidget {
   final Drawer drawerAread;
 
   const DrawerArea({Key? key, required this.drawerAread}) : super(key: key);
 
+  @override
+  State<DrawerArea> createState() => _DrawerAreaState();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => throw UnimplementedError();
+}
+
+class _DrawerAreaState extends State<DrawerArea> {
+  @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
@@ -42,17 +52,11 @@ class DrawerArea extends StatelessWidget implements PreferredSizeWidget {
             title: Text('Home'),
             onTap: () {
               print("홈버튼!!!!");
-              Get.to(MainHome(
-                email: AuthController.instance.auth.currentUser!.email!,
-              ));
-              /*Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MainHome(
-                            email: AuthController
-                                .instance.auth.currentUser!.email!,
-                          )));*/
+              print(dbName.userReservation);
+              Route route = MaterialPageRoute(
+                  builder: (context) => MainHome(
+                      email: AuthController.instance.auth.currentUser!.email!));
+              Navigator.pushReplacement(context, route);
             },
           ),
           ListTile(
@@ -93,8 +97,4 @@ class DrawerArea extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => throw UnimplementedError();
 }

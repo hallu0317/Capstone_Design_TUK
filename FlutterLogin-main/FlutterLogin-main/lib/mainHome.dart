@@ -147,18 +147,31 @@ class _MainHomeState extends State<MainHome> {
                               child: TextButton(
                                   onPressed: () {
                                     if (regions[index] == "예약") {
-                                      Get.to(Reservation(email: widget.email));
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) =>
+                                              Reservation(email: widget.email));
+                                      Navigator.pushReplacement(context, route);
                                     } else if (regions[index] == "예약 조회") {
-                                      Get.to(reservationCheck());
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) =>
+                                              reservationCheck());
+                                      Navigator.pushReplacement(context, route);
                                       print("예약 조회 클릭");
                                     } else if (regions[index] == "시설 이용") {
-                                      Get.to(Facilities());
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) => Facilities());
+                                      Navigator.pushReplacement(context, route);
                                       print("시설 이용 클릭");
                                     } else if (regions[index] == "사용자 추가") {
-                                      Get.to(AddAuth());
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) => AddAuth());
+                                      Navigator.pushReplacement(context, route);
                                       print("사용자 추가 클릭");
                                     } else if (regions[index] == "예약 취소") {
-                                      Get.to(ReservationCancel());
+                                      Route route = MaterialPageRoute(
+                                          builder: (context) =>
+                                              ReservationCancel());
+                                      Navigator.pushReplacement(context, route);
                                       print("예약 취소 클릭");
                                     }
                                   },
