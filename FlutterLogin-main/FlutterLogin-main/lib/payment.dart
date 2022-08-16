@@ -234,6 +234,8 @@ class _PaymentState extends State<Payment> {
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "PAYPAL") {
                             print("PAYPAL");
+                            dbName.userReservation = true;
+                            updateMemberData();
                             updateHotelData();
                           }
                         },

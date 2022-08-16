@@ -11,7 +11,6 @@ import 'package:flutter_login/mainHomeNotReservation.dart';
 import 'package:flutter_login/myProfileNotReservation.dart';
 import 'package:flutter_login/payment.dart';
 import 'package:flutter_login/regions_reservation.dart';
-import 'package:flutter_login/regions.dart';
 import 'package:flutter_login/reservationAlert.dart';
 import 'package:get/get.dart';
 import 'myProfile.dart';
@@ -31,8 +30,15 @@ class MainHome extends StatefulWidget {
   State<MainHome> createState() => _MainHomeState();
 }
 
+var regions = ["예약 조회", "시설 목록", "사용자 추가", "예약 취소"];
+
 class _MainHomeState extends State<MainHome> {
   String name = "";
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,32 +152,16 @@ class _MainHomeState extends State<MainHome> {
                           child: Center(
                               child: TextButton(
                                   onPressed: () {
-                                    if (regions[index] == "예약") {
-                                      Route route = MaterialPageRoute(
-                                          builder: (context) =>
-                                              Reservation(email: widget.email));
-                                      Navigator.pushReplacement(context, route);
-                                    } else if (regions[index] == "예약 조회") {
-                                      Route route = MaterialPageRoute(
-                                          builder: (context) =>
-                                              reservationCheck());
-                                      Navigator.pushReplacement(context, route);
-                                      print("예약 조회 클릭");
-                                    } else if (regions[index] == "시설 이용") {
-                                      Route route = MaterialPageRoute(
-                                          builder: (context) => Facilities());
-                                      Navigator.pushReplacement(context, route);
+                                    if (regions[index] == "예약 조회") {
+                                      Get.to(reservationCheck());
+                                    } else if (regions[index] == "시설 목록") {
+                                      Get.to(Facilities());
                                       print("시설 이용 클릭");
                                     } else if (regions[index] == "사용자 추가") {
-                                      Route route = MaterialPageRoute(
-                                          builder: (context) => AddAuth());
-                                      Navigator.pushReplacement(context, route);
+                                      Get.to(AddAuth());
                                       print("사용자 추가 클릭");
                                     } else if (regions[index] == "예약 취소") {
-                                      Route route = MaterialPageRoute(
-                                          builder: (context) =>
-                                              ReservationCancel());
-                                      Navigator.pushReplacement(context, route);
+                                      Get.to(ReservationCancel());
                                       print("예약 취소 클릭");
                                     }
                                   },

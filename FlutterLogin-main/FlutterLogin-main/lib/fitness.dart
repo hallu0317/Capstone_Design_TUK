@@ -92,17 +92,6 @@ class _FitnessState extends State<Fitness> {
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold),
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.grey, // Background color
-                    ),
-                    onPressed: () {
-                      Get.to(Payment(
-                        email: AuthController.instance.auth.currentUser!.email!,
-                      ));
-                    },
-                    child: Text("이용 등록",
-                        style: TextStyle(fontWeight: FontWeight.bold)))
               ],
             ),
             SizedBox(

@@ -8,6 +8,8 @@ import 'package:bootpay_api/model/extra.dart';
 import 'package:bootpay_api/model/user.dart';
 import 'package:bootpay_api/model/item.dart';
 import 'package:bootpay_webview_flutter/webview_flutter.dart';
+import 'package:flutter_login/reservationCheck.dart';
+import 'package:get/get.dart';
 
 class NaverPage extends StatefulWidget {
   @override
@@ -130,12 +132,10 @@ class NaverPageState extends State<NaverPage> {
     item2.price = 1000; // 상품의 가격
     List<Item> itemList = [item1, item2];
 
-    BootpayApi.request(
-      context,
-      payload,
-      extra: extra,
-      user: user,
-      items: itemList,
-    );
+    BootpayApi.request(context, payload,
+        extra: extra,
+        user: user,
+        items: itemList,
+        onDone: (value) => Get.to(() => reservationCheck()));
   }
 }

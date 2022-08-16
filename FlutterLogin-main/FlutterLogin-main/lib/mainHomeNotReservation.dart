@@ -8,11 +8,11 @@ import 'package:get/get.dart';
 import 'fireStore.dart' as dbName;
 import 'mainHome.dart';
 import 'widget/appbar_widget.dart';
-import 'regions.dart';
 import 'regions_reservation.dart';
 import 'facilities.dart';
 
 Widget mainHome2() {
+  var regions = ["예약", "시설 목록"];
   dbName.initState();
   return MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -89,7 +89,7 @@ Widget mainHome2() {
               ),
             ),
             GridView.builder(
-              itemCount: regions.length - 2,
+              itemCount: regions.length,
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
@@ -105,11 +105,9 @@ Widget mainHome2() {
                                   Get.to(Reservation(
                                       email: AuthController
                                           .instance.auth.currentUser!.email!));
-                                } else if (regions[index] == "예약 조회") {
-                                  print("예약 조회 클릭");
-                                } else if (regions[index] == "시설 이용") {
+                                } else if (regions[index] == "시설 목록") {
                                   Get.to(Facilities());
-                                  print("시설 이용 클릭");
+                                  print("시설 목록 클릭");
                                 }
                               },
                               child: Text(

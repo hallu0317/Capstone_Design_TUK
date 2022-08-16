@@ -92,17 +92,6 @@ class _RestaurantState extends State<Restaurant> {
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold),
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.grey, // Background color
-                    ),
-                    onPressed: () {
-                      Get.to(Payment(
-                        email: AuthController.instance.auth.currentUser!.email!,
-                      ));
-                    },
-                    child: Text("예약하기",
-                        style: TextStyle(fontWeight: FontWeight.bold)))
               ],
             ),
             SizedBox(
