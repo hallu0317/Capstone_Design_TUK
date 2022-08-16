@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_login/auth_controller.dart';
 import 'package:flutter_login/mainHome.dart';
 import 'package:flutter_login/widget/appbar_widget.dart';
+import 'package:get/get.dart';
 import 'mainHomeNotReservation.dart';
 import 'fireStore.dart' as dbName;
 
@@ -115,8 +116,12 @@ class ReservationCancel extends StatelessWidget {
                                             .doc("${email}")
                                             .update({
                                           "reservation": false,
-                                          "rooms": FieldValue.delete(),
+                                          "rooms": "",
                                         });
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(SnackBar(
+                                                content:
+                                                    Text("예약취소가 완료되었습니다.")));
                                       },
                                       child: Text("Yes")),
                                   TextButton(
@@ -143,7 +148,23 @@ class ReservationCancel extends StatelessWidget {
                   }
                 });
               },
-            )
+            ),
+            SizedBox(height: 80.0),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey, // Background color
+              ),
+              // style: ButtonStyle(backgroundColor: Colors.accents),
+              onPressed: () async {
+                Get.to(MainHome(
+                  email: AuthController.instance.auth.currentUser!.email!,
+                ));
+              },
+              child: Text(
+                "메인화면으로 이동",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
           ],
         ));
   }

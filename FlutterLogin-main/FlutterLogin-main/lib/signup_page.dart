@@ -42,6 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
       "name": _nameController.text,
       "phone": _phoneNumberController.text,
       "reservation": false,
+      "rooms": ""
     });
   }
 

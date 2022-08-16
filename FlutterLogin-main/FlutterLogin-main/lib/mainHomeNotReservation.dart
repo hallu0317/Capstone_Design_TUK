@@ -89,7 +89,7 @@ Widget mainHome2() {
               ),
             ),
             GridView.builder(
-              itemCount: regions.length,
+              itemCount: regions.length - 2,
               shrinkWrap: true,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
