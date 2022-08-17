@@ -35,7 +35,6 @@ class _PaymentState extends State<Payment> {
   var paymethod = [
     "카카오페이",
     "신용카드",
-    "계좌이체",
     "네이버페이",
     "PAYPAL",
   ];
@@ -205,7 +204,7 @@ class _PaymentState extends State<Payment> {
                 ),
                 GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 5,
+                    crossAxisCount: 4,
                   ),
                   itemCount: paymethod.length,
                   shrinkWrap: true,
@@ -223,14 +222,14 @@ class _PaymentState extends State<Payment> {
                             print("신용카드");
                             TestPageState().goBootpayRequest(context);
                             updateMemberData();
+                            updateHotelData();
                             dbName.userReservation = true;
                             // Get.to(TestPage());
-                          } else if (paymethod[index] == "계좌이체") {
-                            print("계좌이체");
                           } else if (paymethod[index] == "네이버페이") {
                             print("네이버페이");
                             NaverPageState().goBootpayRequest(context);
                             updateMemberData();
+                            updateHotelData();
                             dbName.userReservation = true;
                           } else if (paymethod[index] == "PAYPAL") {
                             print("PAYPAL");
