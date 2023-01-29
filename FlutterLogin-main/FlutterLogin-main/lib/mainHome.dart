@@ -20,6 +20,10 @@ import 'package:flutter_login/reservationCheck.dart';
 import 'add_auth.dart';
 import 'reservationCancel.dart';
 import 'widget/appbar_widget.dart';
+import 'package:encrypt/encrypt.dart' as enc;
+
+var urlKey = "";
+var aes_key = "tukoreacapstoneproject2021202223";
 
 //MainHome화면
 class MainHome extends StatefulWidget {
@@ -108,8 +112,7 @@ class _MainHomeState extends State<MainHome> {
                                 onPressed: () {
                                   print("Open!!");
                                   updateOrderData();
-                                  updateMemberData();
-                                  updateRoomData();
+                                  updateOrderValue();
                                   print(dbName.userName);
                                 },
                                 icon: Icon(Icons.lock_open),
@@ -205,30 +208,57 @@ class _MainHomeState extends State<MainHome> {
     });
   }
 
-  final orderCollection = FirebaseFirestore.instance.collection("order");
 //도어락 오픈시 order 필드 값 true변경
-  Future updateOrderData() async {
-    print("@@order 필드 값 변경!!");
-    return await orderCollection.doc("raspberrypi").update({
-      "order": true,
-    });
-  }
+}
 
-  final memberCollection = FirebaseFirestore.instance.collection("order");
-//도어락 open시 member필드에 이메일 값 저장
-  Future updateMemberData() async {
-    print("@@order member필드값 변경!");
-    return await memberCollection.doc("raspberrypi").update({
-      "member": AuthController.instance.auth.currentUser!.email,
-    });
-  }
+Future updateOrderData() async {
+  print("@@order 필드 값 변경!!");
+  return await FirebaseFirestore.instance
+      .collection("order")
+      .doc("raspberrypi")
+      .update({
+    "order": true,
+  });
+}
 
-  final roomCollection = FirebaseFirestore.instance.collection("order");
-//도어락 open시 member필드에 이메일 값 저장
-  Future updateRoomData() async {
-    print("@@order member필드값 변경!");
-    return await roomCollection.doc("raspberrypi").update({
-      "roomtype": dbName.userRoom,
-    });
-  }
+Future updateOrderValue() async {
+  print("@@value 필드 값 변경!!");
+  print("${AuthController.instance.auth.currentUser!.email}");
+  FirebaseFirestore.instance
+      .collection('member')
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    urlKey = value.data()?["email"] + "/";
+  });
+  print("${urlKey}");
+  FirebaseFirestore.instance
+      .collection("member")
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    urlKey = urlKey + value.data()?["rooms"] + "/";
+  });
+  print("2. " + urlKey);
+  FirebaseFirestore.instance
+      .collection("member")
+      .doc("${AuthController.instance.auth.currentUser!.email}")
+      .get()
+      .then((value) {
+    urlKey = urlKey + value.data()?["reservation"];
+  });
+  print("3. " + urlKey);
+
+  final key = enc.Key.fromUtf8(aes_key);
+  final iv = enc.IV.fromLength(16);
+
+  final encrypter = enc.Encrypter(enc.AES(key, mode: enc.AESMode.cbc));
+  final encrypted = encrypter.encrypt(urlKey, iv: iv);
+
+  return await FirebaseFirestore.instance
+      .collection("order")
+      .doc("raspberrypi")
+      .update({
+    "value": encrypted.base64,
+  });
 }
