@@ -230,27 +230,34 @@ Future updateOrderValue() async {
       .get()
       .then((value) {
     urlKey = value.data()?["email"] + "/";
+    print("1. " + urlKey);
   });
-  print("${urlKey}");
+
   FirebaseFirestore.instance
       .collection("member")
       .doc("${AuthController.instance.auth.currentUser!.email}")
       .get()
       .then((value) {
     urlKey = urlKey + value.data()?["rooms"] + "/";
+    print("2. " + urlKey);
   });
-  print("2. " + urlKey);
+
   FirebaseFirestore.instance
       .collection("member")
       .doc("${AuthController.instance.auth.currentUser!.email}")
       .get()
       .then((value) {
-    urlKey = urlKey + value.data()?["reservation"];
+    if (value.data()?["reservation"] == true) {
+      urlKey = urlKey + "true";
+    } else {
+      urlKey = urlKey + "false";
+    }
+    print("3. " + urlKey);
   });
-  print("3. " + urlKey);
 
   final key = enc.Key.fromUtf8(aes_key);
   final iv = enc.IV.fromLength(16);
+  print("${key}");
 
   final encrypter = enc.Encrypter(enc.AES(key, mode: enc.AESMode.cbc));
   final encrypted = encrypter.encrypt(urlKey, iv: iv);
