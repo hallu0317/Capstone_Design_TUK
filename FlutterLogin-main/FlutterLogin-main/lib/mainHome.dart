@@ -257,7 +257,6 @@ Future updateOrderValue() async {
 
   final key = enc.Key.fromUtf8(aes_key);
   final iv = enc.IV.fromLength(16);
-  print("${key}");
 
   final encrypter = enc.Encrypter(enc.AES(key, mode: enc.AESMode.cbc));
   final encrypted = encrypter.encrypt(urlKey, iv: iv);
