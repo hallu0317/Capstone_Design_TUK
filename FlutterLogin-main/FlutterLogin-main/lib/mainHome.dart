@@ -21,9 +21,11 @@ import 'add_auth.dart';
 import 'reservationCancel.dart';
 import 'widget/appbar_widget.dart';
 import 'package:encrypt/encrypt.dart' as enc;
+import 'dart:convert';
 
-var urlKey = "";
-var aes_key = "tukoreacapstoneproject2021202223";
+var plaintext = "";
+var aesKey = "tukoreacapstonep";
+var iv = "kjwlbhcsrhkw1234";
 
 //MainHome화면
 class MainHome extends StatefulWidget {
@@ -223,24 +225,22 @@ Future updateOrderData() async {
 
 Future updateOrderValue() async {
   print("@@value 필드 값 변경!!");
-  print("${AuthController.instance.auth.currentUser!.email}");
-  FirebaseFirestore.instance
-      .collection('member')
-      .doc("${AuthController.instance.auth.currentUser!.email}")
-      .get()
-      .then((value) {
-    urlKey = value.data()?["email"] + "/";
-    print("1. " + urlKey);
-  });
+  //print("${AuthController.instance.auth.currentUser!.email}");
+  // FirebaseFirestore.instance
+  //     .collection('member')
+  //     .doc("${AuthController.instance.auth.currentUser!.email}")
+  //     .get()
+  //     .then((value) {
+  //   plaintext = value.data()?["email"] + "/";
+  // });
 
-  FirebaseFirestore.instance
-      .collection("member")
-      .doc("${AuthController.instance.auth.currentUser!.email}")
-      .get()
-      .then((value) {
-    urlKey = urlKey + value.data()?["rooms"] + "/";
-    print("2. " + urlKey);
-  });
+  // FirebaseFirestore.instance
+  //     .collection("member")
+  //     .doc("${AuthController.instance.auth.currentUser!.email}")
+  //     .get()
+  //     .then((value) {
+  //   plaintext = plaintext + value.data()?["rooms"] + "/";
+  // });
 
   FirebaseFirestore.instance
       .collection("member")
@@ -248,23 +248,30 @@ Future updateOrderValue() async {
       .get()
       .then((value) {
     if (value.data()?["reservation"] == true) {
-      urlKey = urlKey + "true";
+      plaintext =
+          value.data()?["email"] + "/" + value.data()?["rooms"] + "/true";
     } else {
-      urlKey = urlKey + "false";
+      plaintext =
+          value.data()?["email"] + "/" + value.data()?["rooms"] + "/false";
     }
-    print("3. " + urlKey);
   });
 
-  final key = enc.Key.fromUtf8(aes_key);
-  final iv = enc.IV.fromLength(16);
+  final key = enc.Key.fromUtf8(aesKey);
+  final ivkey = enc.IV.fromUtf8(iv);
 
   final encrypter = enc.Encrypter(enc.AES(key, mode: enc.AESMode.cbc));
-  final encrypted = encrypter.encrypt(urlKey, iv: iv);
+  final encrypted = encrypter.encrypt(plaintext, iv: ivkey);
+
+  print(base64.encode(utf8.encode(aesKey)));
+  print(base64.encode(utf8.encode(iv)));
+  print(encrypted.base64);
 
   return await FirebaseFirestore.instance
       .collection("order")
       .doc("raspberrypi")
       .update({
     "value": encrypted.base64,
+    "key": base64.encode(utf8.encode(aesKey)),
+    "ivkey": base64.encode(utf8.encode(iv))
   });
 }
