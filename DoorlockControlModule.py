@@ -38,10 +38,6 @@ def decrypt_aes_128(key_b64, iv_b64, encrypted_text):
     
     return decrypted_text.decode()
 
-def divide_string(string):
-    # Divide String by '/' and return divided String Array
-    return string.split("/")
-
 ### Init Setting ###
 GPIO_PIN_NUMS = [5, 6, 22, 27]          # Doorlock Relay 신호 Pin 넘버 (Std >> 5 // Dlx >> 6 // Exc >> 22 // Sup >> 27)
 DELAY_TIME = 0.1                        # Doorlock OPEN 신호 주기 (SEC, type 'float')
